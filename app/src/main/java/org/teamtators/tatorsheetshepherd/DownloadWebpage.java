@@ -12,26 +12,30 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DownloadWebpage extends AsyncTask<String, Void, String>{
+public class DownloadWebpage extends AsyncTask<String, Void, String> {
     AsyncResult callback;
 
-    public DownloadWebpage(AsyncResult callback){
+    public DownloadWebpage(AsyncResult callback) {
         this.callback = callback;
     }
 
     @Override
-    protected String inBackground(String... urls){
-        try{
+    protected String doInBackground(String... urls) {
+
+        // params comes from the execute() call: params[0] is the url.
+        try {
             return downloadUrl(urls[0]);
-        } catch (IOEsception e) {
-            return "The page you requested cannot be downloaded";
+        } catch (IOException e) {
+            return "Unable to download the requested page, are you connected to the internet?";
         }
     }
 
+    // onPostExecute displays the results of the AsyncTask.
     @Override
-    protected void onPostExecute(String result){
-        int start = result.indexOf("{", result.IndexOf("{") + 1);
-        int end = result.indexOf("}");
+    protected void onPostExecute(String result) {
+        // remove the unnecessary parts from the response and construct a JSON
+        int start = result.indexOf("{", result.indexOf("{") + 1);
+        int end = result.lastIndexOf("}");
         String jsonResponse = result.substring(start, end);
         try {
             JSONObject table = new JSONObject(jsonResponse);
@@ -41,31 +45,34 @@ public class DownloadWebpage extends AsyncTask<String, Void, String>{
         }
     }
 
-    private String downloadUrl(String urlString){
+    private String downloadUrl(String urlString) throws IOException {
         InputStream is = null;
 
         try {
             URL url = new URL(urlString);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000);
-            conn.setConnectTimeout(15000);
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
+            // Starts the query
             conn.connect();
             int responseCode = conn.getResponseCode();
             is = conn.getInputStream();
+
             String contentAsString = convertStreamToString(is);
             return contentAsString;
         } finally {
-            if(is != null){
+            if (is != null) {
                 is.close();
             }
         }
     }
 
-    private String convertStreamToString(InputStream is){
+    private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
+
         String line = null;
         try {
             while ((line = reader.readLine()) != null) {
@@ -76,7 +83,7 @@ public class DownloadWebpage extends AsyncTask<String, Void, String>{
         } finally {
             try {
                 is.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
