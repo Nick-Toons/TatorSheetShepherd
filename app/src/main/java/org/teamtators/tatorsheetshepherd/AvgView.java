@@ -4,7 +4,7 @@ package org.teamtators.tatorsheetshepherd;
  * Created by idabs on 2/13/2017.
  */
 
-public class AvgView {
+public class AvgView{
     private int teamNumber;
     private int lowBarX, chevalX, lowF, chevalF;
     private float lowBarT, chevalT;

@@ -15,18 +15,34 @@
         android:layout_marginTop="100dp"/>
 
     <Button
-        android:id="@+id/btnDownload" android:enabled="false"
-        android:onClick="buttonClickHandler"
+        android:id="@+id/btnDownloadMatch"
+        android:enabled="false"
+        android:onClick="buttonMatchHandler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DOWNLOAD TABLE"
+        android:text="DOWNLOAD MATCH TABLE"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="525dp" />
+        android:layout_marginBottom="520dp"
+        android:layout_marginLeft="190dp" />
 
     <Button
-        android:id="@+id/btnClear" android:enabled="true"
+        android:id="@+id/btnDownloadAvg"
+        android:enabled="false"
+        android:onClick="buttonAvgHandler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOWNLOAD AVERAGE TABLE"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="520dp"
+        android:layout_marginRight="190dp" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:enabled="true"
         android:onClick="buttonClearHandler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +54,8 @@
         android:layout_marginRight="190dp"/>
 
     <Button
-        android:id="@+id/btnFilter" android:enabled="true"
+        android:id="@+id/btnFilter"
+        android:enabled="true"
         android:onClick="buttonFilterHandler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

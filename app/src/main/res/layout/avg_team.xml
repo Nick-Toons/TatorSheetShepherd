@@ -2,50 +2,323 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
 
     <TextView
         android:id="@+id/teamNumber"
-        android:text="Team Number"
+        android:text="TeamNumber"
         android:layout_width="0dp"
         android:layout_weight="0.08"
         android:layout_height="wrap_content"
         android:textColor="#000000"/>
 
     <TextView
-        android:id="@+id/lowBarX"
-        android:text="LowBarX"
+        android:id="@+id/matchNum"
+        android:text="MatchNumber"
         android:layout_width="0dp"
         android:layout_weight="0.08"
         android:layout_height="wrap_content"
         android:textColor="#999999" />
 
     <TextView
-        android:id="@+id/lowBarT"
-        android:text="LowBarTime"
+        android:id="@+id/goodPick"
+        android:text="GoodPick"
         android:layout_width="0dp"
         android:layout_weight="0.08"
         android:layout_height="wrap_content"
         android:textColor="#000000"/>
 
     <TextView
-        android:id="@+id/lowF"
-        android:text="LowFails"
+        android:id="@+id/scoutName"
+        android:text="Scouter"
         android:layout_width="0dp"
         android:layout_weight="0.08"
         android:layout_height="wrap_content"
         android:textColor="#999999"/>
 
     <TextView
-        android:id="@+id/chevalX"
-        android:text="ChevalX"
+        android:id="@+id/startPos"
+        android:text="Starting"
         android:layout_width="0dp"
         android:layout_weight="0.07"
         android:layout_height="wrap_content"
         android:textColor="#000000"/>
 
     <TextView
-        android:id="@+id/chevalT"
+        android:id="@+id/alliance"
+        android:text="Blue/Red"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/noGear"
+        android:text="NoGearAuto"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/gearFail"
+        android:text="AutoGearFail"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/gearPlacement"
+        android:text="PlacedGear"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/hopper1A"
+        android:text="AutoHopper1"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/hopper2A"
+        android:text="AutoHopper2"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/hopper3A"
+        android:text="AutoHopper3"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/hopper4A"
+        android:text="AutoHopper4"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/crossLine"
+        android:text="LineCrossed"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/lowDumpA"
+        android:text="AutoLowDump"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/highAuto"
+        android:text="AutoHighGoals"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/highAccuracy"
+        android:text="AutoHighAccuracy"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tooFastA"
+        android:text="AutoTooQuick"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/hopper1T"
+        android:text="TeleHopper1"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/hopper2T"
+        android:text="TeleHopper2"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/hopper3T"
+        android:text="TeleHopper3"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/hopper4T"
+        android:text="TeleHopper4"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/hopper5T"
+        android:text="TeleHopper5"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/lowDumpT"
+        android:text="TeleLowDumps"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/highTele"
+        android:text="TeleHighGoals"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/highCycles"
+        android:text="HighCycles"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/highAccuracyT"
+        android:text="TeleHighAccuracy"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tooFastT"
+        android:text="TeleTooFast"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/gearDrop"
+        android:text="GearsDropped"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/gearPer1"
+        android:text="Peg1Gears"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/gearPer2"
+        android:text="Peg2Gears"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/gearPer3"
+        android:text="Peg3Gears"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/didDefense"
+        android:text="Defense"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/defenseRate"
+        android:text="DefenseRating"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/didScale"
+        android:text="Scaled"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/didFailScale"
+        android:text="FailedScale"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/gotStuck"
+        android:text="Stuck"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/gotTipped"
+        android:text="Tipped"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"/>
+
+    <TextView
+        android:id="@+id/didDie"
+        android:text="Died"
+        android:layout_width="0dp"
+        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/wasIntermittent"
         android:text="ChevalTime"
         android:layout_width="0dp"
         android:layout_weight="0.08"
@@ -53,8 +326,8 @@
         android:textColor="#999999"/>
 
     <TextView
-        android:id="@+id/chevalF"
-        android:text="ChevalFails"
+        android:id="@+id/additionalNotes"
+        android:text="Notes"
         android:layout_width="0dp"
         android:layout_weight="0.08"
         android:layout_height="wrap_content"
