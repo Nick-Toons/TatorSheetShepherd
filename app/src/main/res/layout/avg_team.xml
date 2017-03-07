@@ -73,7 +73,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Peg2Gears"
-            android:textColor="#0000FF" />
+            android:textColor="#FF00FF" />
 
         <TextView
             android:id="@+id/gearPer3"
@@ -81,7 +81,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Peg3Gears"
-            android:textColor="#00FF00" />
+            android:textColor="#00FFFF" />
 
         <TextView
             android:id="@+id/didDefense"
@@ -89,7 +89,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Defense"
-            android:textColor="#999900" />
+            android:textColor="#22ff00" />
 
         <TextView
             android:id="@+id/defenseRate"
@@ -97,7 +97,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="DefenseRating"
-            android:textColor="#FF7F00" />
+            android:textColor="#FF2222" />
 
         <TextView
             android:id="@+id/didScale"
@@ -105,7 +105,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Scaled"
-            android:textColor="#FF0000" />
+            android:textColor="#88aa33" />
 
         <TextView
             android:id="@+id/didFailScale"
@@ -113,7 +113,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="FailedScale"
-            android:textColor="#FF7F00" />
+            android:textColor="#5588cc" />
 
     </LinearLayout>
 
