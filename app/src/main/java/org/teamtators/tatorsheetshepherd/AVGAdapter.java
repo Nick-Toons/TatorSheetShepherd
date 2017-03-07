@@ -66,52 +66,52 @@ public class AVGAdapter extends ArrayAdapter<ArrayList<String>> {
             matchNum.setTextColor(0);
         } else { matchNum.setWidth(200); }
 
-        if(!avgBools[7]) {
+        if(!avgBools[4]) {
             gearFailA.setWidth(0);
             gearFailA.setTextColor(0);
         } else { gearFailA.setWidth(200); }
 
-        if(!avgBools[8]) {
+        if(!avgBools[3]) {
             gearPlace.setWidth(0);
             gearPlace.setTextColor(0);
         } else { gearPlace.setWidth(200); }
 
-        if(!avgBools[10]){
+        if(!avgBools[5]){
             cross.setWidth(0);
             cross.setTextColor(0);
         } else { cross.setWidth(200);}
 
-        if(!avgBools[20]){
+        if(!avgBools[10]){
             gearFailT.setWidth(0);
             gearFailT.setTextColor(0);
         } else { gearFailT.setWidth(200);}
 
-        if(!avgBools[21]){
+        if(!avgBools[7]){
             gearPerPeg1.setWidth(0);
             gearPerPeg1.setTextColor(0);
         } else { gearPerPeg1.setWidth(200);}
 
-        if(!avgBools[22]){
+        if(!avgBools[8]){
             gearPerPeg2.setWidth(0);
             gearPerPeg2.setTextColor(0);
         } else { gearPerPeg2.setWidth(200);}
 
-        if(!avgBools[23]){
+        if(!avgBools[9]){
             gearPerPeg3.setWidth(0);
             gearPerPeg3.setTextColor(0);
         } else { gearPerPeg3.setWidth(200);}
 
-        if(!avgBools[24]){
+        if(!avgBools[11]){
             defend.setWidth(0);
             defend.setTextColor(0);
         } else { defend.setWidth(200);}
 
-        if(!avgBools[25]){
+        if(!avgBools[12]){
             defenseRating.setWidth(0);
             defenseRating.setTextColor(0);
         } else { defenseRating.setWidth(200);}
 
-        if(!avgBools[26]) {
+        if(!avgBools[13]) {
             scale.setWidth(0);
             scale.setTextColor(0);
             scaleFailed.setWidth(0);

@@ -131,17 +131,17 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             goodPick.setTextColor(0);
         } else { goodPick.setWidth(200); }
 
-        if(!matchBools[3]) {
+        if(!matchBools[15]) {
             scouter.setWidth(0);
             scouter.setTextColor(0);
         } else { scouter.setWidth(200); }
 
-        if(!matchBools[4]) {
+        if(!matchBools[14]) {
             starting.setWidth(0);
             starting.setTextColor(0);
         } else { starting.setWidth(200); }
 
-        if(!matchBools[5]) {
+        if(!matchBools[17]) {
             color.setWidth(0);
             color.setTextColor(0);
         } else { color.setWidth(200); }
@@ -151,17 +151,17 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             noGears.setTextColor(0);
         } else { noGears.setWidth(200); }
 
-        if(!matchBools[7]) {
+        if(!matchBools[4]) {
             gearFailA.setWidth(0);
             gearFailA.setTextColor(0);
         } else { gearFailA.setWidth(200); }
 
-        if(!matchBools[8]) {
+        if(!matchBools[3]) {
             gearPlace.setWidth(0);
             gearPlace.setTextColor(0);
         } else { gearPlace.setWidth(200); }
 
-        if(!matchBools[9]) {
+        if(!matchBools[16]) {
             hopper1Auto.setWidth(0);
             hopper2Auto.setWidth(0);
             hopper3Auto.setWidth(0);
@@ -192,100 +192,100 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             hopper5Tele.setWidth(200);
         }
 
-        if(!matchBools[10]){
+        if(!matchBools[5]){
             cross.setWidth(0);
             cross.setTextColor(0);
         } else { cross.setWidth(200);}
 
-        if(!matchBools[11]){
+        if(!matchBools[18]){
             lowDumpAuto.setWidth(0);
             lowDumpAuto.setTextColor(0);
         } else { lowDumpAuto.setWidth(200);}
 
-        if(!matchBools[12]){
+        if(!matchBools[19]){
             highShotsAuto.setWidth(0);
             highShotsAuto.setTextColor(0);
         } else {highShotsAuto.setWidth(200);}
 
-        if(!matchBools[13]){
+        if(!matchBools[20]){
             highAccAuto.setWidth(0);
             highAccAuto.setTextColor(0);
         } else { highAccAuto.setWidth(200);}
 
-        if(!matchBools[14]){
+        if(!matchBools[21]){
             tooFastAuto.setWidth(0);
             tooFastAuto.setTextColor(0);
         } else { tooFastAuto.setWidth(200);}
 
-        if(!matchBools[15]){
+        if(!matchBools[22]){
             lowDumpTele.setWidth(0);
             lowDumpTele.setTextColor(0);
         } else { lowDumpTele.setWidth(200);}
 
-        if(!matchBools[16]){
+        if(!matchBools[23]){
             highShotsTele.setWidth(0);
             highShotsTele.setTextColor(0);
         } else { highShotsTele.setWidth(200);}
 
-        if(!matchBools[17]){
+        if(!matchBools[24]){
             highCyclesTele.setWidth(0);
             highCyclesTele.setTextColor(0);
         } else { highCyclesTele.setWidth(200);}
 
-        if(!matchBools[18]){
+        if(!matchBools[25]){
             highAccTele.setWidth(0);
             highAccTele.setTextColor(0);
         } else { highAccTele.setWidth(200);}
 
-        if(!matchBools[19]){
+        if(!matchBools[26]){
             tooFastTele.setWidth(0);
             tooFastTele.setTextColor(0);
         } else { tooFastTele.setWidth(200);}
 
-        if(!matchBools[20]){
+        if(!matchBools[10]){
             gearFailT.setWidth(0);
             gearFailT.setTextColor(0);
         } else { gearFailT.setWidth(200);}
 
-        if(!matchBools[21]){
+        if(!matchBools[7]){
             gearPerPeg1.setWidth(0);
             gearPerPeg1.setTextColor(0);
         } else { gearPerPeg1.setWidth(200);}
 
-        if(!matchBools[22]){
+        if(!matchBools[8]){
             gearPerPeg2.setWidth(0);
             gearPerPeg2.setTextColor(0);
         } else { gearPerPeg2.setWidth(200);}
 
-        if(!matchBools[23]){
+        if(!matchBools[9]){
             gearPerPeg3.setWidth(0);
             gearPerPeg3.setTextColor(0);
         } else { gearPerPeg3.setWidth(200);}
 
-        if(!matchBools[24]){
+        if(!matchBools[11]){
             defend.setWidth(0);
             defend.setTextColor(0);
         } else { defend.setWidth(200);}
 
-        if(!matchBools[25]){
+        if(!matchBools[12]){
             defenseRating.setWidth(0);
             defenseRating.setTextColor(0);
         } else { defenseRating.setWidth(200);}
 
-        if(!matchBools[26]){
+        if(!matchBools[13]){
             scale.setWidth(0);
             scale.setTextColor(0);
-        } else { scale.setWidth(200);}
+            scaleFailed.setWidth(0);
+            scaleFailed.setTextColor(0);
+        } else {
+            scale.setWidth(200);
+            scaleFailed.setWidth(200);
+        }
 
         if(!matchBools[27]){
             stuc.setWidth(0);
             stuc.setTextColor(0);
         } else { stuc.setWidth(200);}
-
-        if(!matchBools[26]){
-            scaleFailed.setWidth(0);
-            scaleFailed.setTextColor(0);
-        } else { scaleFailed.setWidth(200);}
 
         if(!matchBools[28]){
             tipp.setWidth(0);
@@ -312,7 +312,7 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         teamNum.setText(matchShow.get(0).get(position));
         matchNum.setText(matchShow.get(1).get(position));
         goodPick.setText(matchShow.get(2).get(position));
-        scouter.setText(matchShow.get(3).get(position));
+        if(matchBools[15]) scouter.setText(matchShow.get(3).get(position));
         starting.setText(matchShow.get(4).get(position));
         color.setText(matchShow.get(5).get(position));
         noGears.setText(matchShow.get(6).get(position));
@@ -322,16 +322,16 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         hopper2Auto.setText(matchShow.get(10).get(position));
         hopper3Auto.setText(matchShow.get(11).get(position));
         hopper4Auto.setText(matchShow.get(12).get(position));
-        cross.setText(matchShow.get(13).get(position));
-        lowDumpAuto.setText(matchShow.get(14).get(position));
-        highShotsAuto.setText(matchShow.get(15).get(position));
-        highAccAuto.setText(matchShow.get(16).get(position));
-        tooFastAuto.setText(matchShow.get(17).get(position));
-        hopper1Tele.setText(matchShow.get(18).get(position));
-        hopper2Tele.setText(matchShow.get(19).get(position));
-        hopper3Tele.setText(matchShow.get(20).get(position));
-        hopper4Tele.setText(matchShow.get(21).get(position));
-        hopper5Tele.setText(matchShow.get(22).get(position));
+        cross.setText(matchShow.get(18).get(position));
+        lowDumpAuto.setText(matchShow.get(19).get(position));
+        highShotsAuto.setText(matchShow.get(20).get(position));
+        highAccAuto.setText(matchShow.get(21).get(position));
+        tooFastAuto.setText(matchShow.get(22).get(position));
+        hopper1Tele.setText(matchShow.get(13).get(position));
+        hopper2Tele.setText(matchShow.get(14).get(position));
+        hopper3Tele.setText(matchShow.get(15).get(position));
+        hopper4Tele.setText(matchShow.get(16).get(position));
+        hopper5Tele.setText(matchShow.get(17).get(position));
         lowDumpTele.setText(matchShow.get(23).get(position));
         highShotsTele.setText(matchShow.get(24).get(position));
         highCyclesTele.setText(matchShow.get(25).get(position));
@@ -344,12 +344,12 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         defend.setText(matchShow.get(32).get(position));
         defenseRating.setText(matchShow.get(33).get(position));
         scale.setText(matchShow.get(34).get(position));
-        stuc.setText(matchShow.get(35).get(position));
-        scaleFailed.setText(matchShow.get(36).get(position));
+        stuc.setText(matchShow.get(36).get(position));
+        scaleFailed.setText(matchShow.get(35).get(position));
         tipp.setText(matchShow.get(37).get(position));
         ded.setText(matchShow.get(38).get(position));
         intermitt.setText(matchShow.get(39).get(position));
-        note.setText(matchShow.get(40).get(position));
+        if(matchBools[31]) note.setText(matchShow.get(40).get(position));
 
         return v;
     }

@@ -71,11 +71,15 @@ public class MainActivity extends AppCompatActivity {
     Button btnDownloadAvg;
     Button btnClear;
     Button btnFilter;
-    final CharSequence[] filterTable = {" Team "," Match "," GoodPick "," Scouter "," StartingPos "," Alliance "," NoAutoGear "," FailAutoGear ",
-            " AutoGearPlacement "," Hoppers "," AutoCrossLine "," AutoLowDumps "," AutoHighShots "," AutoAccuracy",
-            " AutoTooFast "," TeleLowDumps ", " TeleHighShots "," HighCycles "," TeleAccuracy "," TeleTooFast ",
-            " TeleGearFail "," GearsOnPeg1 "," GearsOnPeg2 "," GearsOnPeg3 "," DidDefense "," DefenseRating ",
-            " Scaled/Failed "," Stuck "," Tipped "," Dead "," Intermittent "," Notes "};
+    final CharSequence[] filterTable = {" Team "," Match "," GoodPick ",
+            " AutoGearPlacement "," FailAutoGear "," CrossedLine ",
+            " NoAutoGear "," GearsOnPeg1 "," GearsOnPeg2 "," GearsOnPeg3 ",
+            " TeleGearFail "," DidDefense "," DefenseRating "," Scaled/Failed ",
+            " StartingPosition "," Scouter "," Hoppers "," AllianceColor ",
+            " AutoLowDumps "," AutoHighShots "," AutoAccuracy"," AutoTooFast ",
+            " TeleLowDumps "," TeleHighShots "," HighCycles "," TeleAccuracy ",
+            " TeleTooFast "," Stuck "," Tipped "," Dead "," Intermittent ",
+            " Notes "};
     final static boolean[] matchBool = new boolean[32];
     final static boolean[] avgBool = new boolean[32];
     final ArrayList<Integer> selectedItems = new ArrayList<>();//USED ONLY IN THE FILTERING METHOD
@@ -160,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
         avgList.clear();
         final MatchAdapter adapter = new MatchAdapter(this, R.layout.match_team, matchList);
         listview.setAdapter(adapter);
-        Toast.makeText(getApplicationContext(), amountRemoved + " points of data cleared.", Toast.LENGTH_LONG).show();
     }
 
     public void buttonAVGClearHandler(View view){
@@ -175,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         avgList.clear();
         final AVGAdapter adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
         listview.setAdapter(adapter);
-        Toast.makeText(getApplicationContext(), amountRemoved + " points of data cleared.", Toast.LENGTH_LONG).show();
     }
 
     public void buttonFilterHandler(View view){
@@ -226,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
     public void processMatch(JSONObject object) {
         try {
             JSONArray rows = object.getJSONArray("rows");
-            Toast.makeText(getApplicationContext(), rows.length() + ".", Toast.LENGTH_LONG).show();
             teamNum.add("Team#");
             matchNum.add("Match#");
             goodPick.add("GoodPick");
@@ -479,9 +480,6 @@ public class MainActivity extends AppCompatActivity {
 
         final  MatchAdapter adapter = new MatchAdapter(this, R.layout.match_team, matchList);
         listview.setAdapter(adapter);
-
-        Toast.makeText(getApplicationContext(), "Match View File Downloaded with size " + (teamNum.size() - 1) + ".", Toast.LENGTH_LONG).show();
-        //Toast.makeText(getApplicationContext(), matchList.toString() + ".", Toast.LENGTH_LONG).show();
     }
 
     public void processAVG(JSONObject object){
