@@ -75,7 +75,18 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         View v = convertView;
         if (v == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.layout.match_team, null);
+            if(MainActivity.layoutBools[0]){
+                v = vi.inflate(R.layout.match_team_small, null);
+            } else if (MainActivity.layoutBools[1]){
+                v = vi.inflate(R.layout.match_team, null);
+            } else if (MainActivity.layoutBools[2]){
+                v = vi.inflate(R.layout.match_team_large, null);
+            } else if (MainActivity.layoutBools[3]){
+                v = vi.inflate(R.layout.match_team_xlarge, null);
+            } else {
+                v = vi.inflate(R.layout.match_team_small, null);
+            }
+
         }
         teamNum = (TextView) v.findViewById(R.id.teamNumber);
         matchNum = (TextView) v.findViewById(R.id.matchNum);

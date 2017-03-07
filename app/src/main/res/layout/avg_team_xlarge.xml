@@ -1,0 +1,120 @@
+<?xml version="0.5" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/teamNumber"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="TeamNumber"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/matchNum"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="MatchNumber"
+            android:textColor="#FF0000" />
+
+        <TextView
+            android:id="@+id/gearFail"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="AutoGearFail"
+            android:textColor="#FF7F00" />
+
+        <TextView
+            android:id="@+id/gearPlacement"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="PlacedGear"
+            android:textColor="#999900" />
+
+        <TextView
+            android:id="@+id/crossLine"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="LineCrossed"
+            android:textColor="#00FF00" />
+
+        <TextView
+            android:id="@+id/gearDrop"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="GearsDropped"
+            android:textColor="#0000FF" />
+
+        <TextView
+            android:id="@+id/gearPer1"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="Peg1Gears"
+            android:textColor="#9400D3" />
+
+        <TextView
+            android:id="@+id/gearPer2"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="Peg2Gears"
+            android:textColor="#FF00FF" />
+
+        <TextView
+            android:id="@+id/gearPer3"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="Peg3Gears"
+            android:textColor="#00FFFF" />
+
+        <TextView
+            android:id="@+id/didDefense"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="Defense"
+            android:textColor="#22ff00" />
+
+        <TextView
+            android:id="@+id/defenseRate"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="DefenseRating"
+            android:textColor="#FF2222" />
+
+        <TextView
+            android:id="@+id/didScale"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="Scaled"
+            android:textColor="#88aa33" />
+
+        <TextView
+            android:id="@+id/didFailScale"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="FailedScale"
+            android:textColor="#5588cc" />
+
+    </LinearLayout>
+
+</HorizontalScrollView>

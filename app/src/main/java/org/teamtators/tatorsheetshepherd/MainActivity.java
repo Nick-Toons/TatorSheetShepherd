@@ -4,6 +4,7 @@ package org.teamtators.tatorsheetshepherd;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> tooFastAuto   =  new ArrayList<String>();
     ArrayList<String> tooFastTele   =  new ArrayList<String>();
     ArrayList<String> pl = new ArrayList<>();
+    public static boolean[] layoutBools = new boolean[4];
     public static ArrayList<ArrayList<String>> matchList = new ArrayList<>();
     public static ArrayList<ArrayList<String>> avgList = new ArrayList<>(20);
     GridView listview;
@@ -87,7 +89,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            setContentView(R.layout.activity_main_small);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_NORMAL){
+            setContentView(R.layout.activity_main);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_LARGE){
+            setContentView(R.layout.activity_main_large);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_XLARGE){
+            setContentView(R.layout.activity_main_xlarge);
+        } else {
+            setContentView(R.layout.activity_main_small);
+        }
         listview = (GridView) findViewById(R.id.listview);
         btnDownloadMatch = (Button) findViewById(R.id.btnDownloadMatch);
         btnDownloadAvg = (Button) findViewById(R.id.btnDownloadAvg);
@@ -162,7 +178,42 @@ public class MainActivity extends AppCompatActivity {
             avg.clear();
         }
         avgList.clear();
-        final MatchAdapter adapter = new MatchAdapter(this, R.layout.match_team, matchList);
+        final MatchAdapter adapter;
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            adapter = new MatchAdapter(this, R.layout.match_team_small, matchList);
+            layoutBools[0] = true;
+            layoutBools[1] = false;
+            layoutBools[2] = false;
+            layoutBools[3] = false;
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_NORMAL){
+            adapter = new MatchAdapter(this, R.layout.match_team, matchList);
+            layoutBools[0] = false;
+            layoutBools[1] = true;
+            layoutBools[2] = false;
+            layoutBools[3] = false;
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_LARGE){
+            adapter = new MatchAdapter(this, R.layout.match_team_large, matchList);
+            layoutBools[0] = false;
+            layoutBools[1] = false;
+            layoutBools[2] = true;
+            layoutBools[3] = false;
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_XLARGE){
+            adapter = new MatchAdapter(this, R.layout.match_team_xlarge, matchList);
+            layoutBools[0] = false;
+            layoutBools[1] = false;
+            layoutBools[2] = false;
+            layoutBools[3] = true;
+        } else {
+            adapter = new MatchAdapter(this, R.layout.match_team_small, matchList);
+            layoutBools[0] = false;
+            layoutBools[1] = false;
+            layoutBools[2] = false;
+            layoutBools[3] = false;
+        }
         listview.setAdapter(adapter);
     }
 
@@ -176,7 +227,43 @@ public class MainActivity extends AppCompatActivity {
         }
         matchList.clear();
         avgList.clear();
-        final AVGAdapter adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
+        final AVGAdapter adapter;
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            adapter = new AVGAdapter(this, R.layout.avg_team_small, avgList);
+            layoutBools[0] = true;
+            layoutBools[1] = false;
+            layoutBools[2] = false;
+            layoutBools[3] = false;
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_NORMAL){
+            adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
+            layoutBools[0] = false;
+            layoutBools[1] = true;
+            layoutBools[2] = false;
+            layoutBools[3] = false;
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_LARGE){
+            adapter = new AVGAdapter(this, R.layout.avg_team_large, avgList);
+            layoutBools[0] = false;
+            layoutBools[1] = false;
+            layoutBools[2] = true;
+            layoutBools[3] = false;
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_XLARGE){
+            adapter = new AVGAdapter(this, R.layout.avg_team_xlarge, avgList);
+            layoutBools[0] = false;
+            layoutBools[1] = false;
+            layoutBools[2] = false;
+            layoutBools[3] = true;
+        } else {
+            adapter = new AVGAdapter(this, R.layout.avg_team_small, avgList);
+            layoutBools[0] = false;
+            layoutBools[1] = false;
+            layoutBools[2] = false;
+            layoutBools[3] = false;
+        }
+
         listview.setAdapter(adapter);
     }
 
@@ -478,7 +565,22 @@ public class MainActivity extends AppCompatActivity {
             matchList.add(pl);
         }
 
-        final  MatchAdapter adapter = new MatchAdapter(this, R.layout.match_team, matchList);
+        final MatchAdapter adapter;
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            adapter = new MatchAdapter(this, R.layout.match_team_small, matchList);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_NORMAL){
+            adapter = new MatchAdapter(this, R.layout.match_team, matchList);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_LARGE){
+            adapter = new MatchAdapter(this, R.layout.match_team_large, matchList);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_XLARGE){
+            adapter = new MatchAdapter(this, R.layout.match_team_xlarge, matchList);
+        } else {
+            adapter = new MatchAdapter(this, R.layout.match_team, matchList);
+        }
         listview.setAdapter(adapter);
     }
 
@@ -580,7 +682,22 @@ public class MainActivity extends AppCompatActivity {
             avgList.add(pl);
         }
 
-        final  AVGAdapter adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
+        final AVGAdapter adapter;
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            adapter = new AVGAdapter(this, R.layout.avg_team_small, avgList);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_NORMAL){
+            adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_LARGE){
+            adapter = new AVGAdapter(this, R.layout.avg_team_large, avgList);
+        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                == Configuration.SCREENLAYOUT_SIZE_XLARGE){
+            adapter = new AVGAdapter(this, R.layout.avg_team_xlarge, avgList);
+        } else {
+            adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
+        }
         listview.setAdapter(adapter);
 
     }
