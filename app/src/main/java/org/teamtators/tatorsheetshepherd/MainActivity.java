@@ -23,22 +23,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> highAccAuto   =   new ArrayList<String>();
-    ArrayList<String> highAccTele   =   new ArrayList<String>();
-    ArrayList<String> color         =   new ArrayList<String>();
-    ArrayList<String> cross         =   new ArrayList<String>();
-    ArrayList<String> ded           =     new ArrayList<String>();
+    ArrayList<String> highAccAuto   =  new ArrayList<String>();
+    ArrayList<String> highAccTele   =  new ArrayList<String>();
+    ArrayList<String> color         =  new ArrayList<String>();
+    ArrayList<String> cross         =  new ArrayList<String>();
+    ArrayList<String> ded           =  new ArrayList<String>();
     ArrayList<String> defend        =  new ArrayList<String>();
-    ArrayList<String> defenseRating = new ArrayList<String>();
-    ArrayList<String> gearFailA     =   new ArrayList<String>();
-    ArrayList<String> gearFailT     =   new ArrayList<String>();
+    ArrayList<String> defenseRating =  new ArrayList<String>();
+    ArrayList<String> gearFailA     =  new ArrayList<String>();
+    ArrayList<String> gearFailT     =  new ArrayList<String>();
     ArrayList<String> gearPlace     =  new ArrayList<String>();
-    ArrayList<String> gearPerPeg1   =   new ArrayList<String>();
-    ArrayList<String> gearPerPeg2   =   new ArrayList<String>();
-    ArrayList<String> gearPerPeg3   =   new ArrayList<String>();
-    ArrayList<String> highCyclesTele= new ArrayList<String>();
-    ArrayList<String> highShotsAuto =   new ArrayList<String>();
-    ArrayList<String> highShotsTele =   new ArrayList<String>();
+    ArrayList<String> gearPerPeg1   =  new ArrayList<String>();
+    ArrayList<String> gearPerPeg2   =  new ArrayList<String>();
+    ArrayList<String> gearPerPeg3   =  new ArrayList<String>();
+    ArrayList<String> highCyclesTele=  new ArrayList<String>();
+    ArrayList<String> highShotsAuto =  new ArrayList<String>();
+    ArrayList<String> highShotsTele =  new ArrayList<String>();
     ArrayList<String> hopper1Auto   =  new ArrayList<String>();
     ArrayList<String> hopper2Auto   =  new ArrayList<String>();
     ArrayList<String> hopper3Auto   =  new ArrayList<String>();
@@ -48,22 +48,30 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> hopper3Tele   =  new ArrayList<String>();
     ArrayList<String> hopper4Tele   =  new ArrayList<String>();
     ArrayList<String> hopper5Tele   =  new ArrayList<String>();
-    ArrayList<String> intermitt     =    new ArrayList<String>();
+    ArrayList<String> intermitt     =  new ArrayList<String>();
     ArrayList<String> lowDumpAuto   =  new ArrayList<String>();
     ArrayList<String> lowDumpTele   =  new ArrayList<String>();
-    ArrayList<String> matchNum      =     new ArrayList<String>();
-    ArrayList<String> noGears       =      new ArrayList<String>();
-    ArrayList<String> note          =         new ArrayList<String>();
-    ArrayList<String> scale         =        new ArrayList<String>();
+    ArrayList<String> matchNum      =  new ArrayList<String>();
+    ArrayList<String> noGears       =  new ArrayList<String>();
+    ArrayList<String> note          =  new ArrayList<String>();
+    ArrayList<String> scale         =  new ArrayList<String>();
     ArrayList<String> scaleFailed   =  new ArrayList<String>();
-    ArrayList<String> scouter       =      new ArrayList<String>();
-    ArrayList<String> goodPick      =     new ArrayList<String>();
-    ArrayList<String> starting      =     new ArrayList<String>();
-    ArrayList<String> stuc          =         new ArrayList<String>();
-    ArrayList<String> teamNum       =      new ArrayList<String>();
-    ArrayList<String> tipp          =         new ArrayList<String>();
+    ArrayList<String> scouter       =  new ArrayList<String>();
+    ArrayList<String> goodPick      =  new ArrayList<String>();
+    ArrayList<String> starting      =  new ArrayList<String>();
+    ArrayList<String> stuc          =  new ArrayList<String>();
+    ArrayList<String> teamNum       =  new ArrayList<String>();
+    ArrayList<String> tipp          =  new ArrayList<String>();
     ArrayList<String> tooFastAuto   =  new ArrayList<String>();
     ArrayList<String> tooFastTele   =  new ArrayList<String>();
+
+    ArrayList<String> retrievalFoul  =  new ArrayList<>();
+    ArrayList<String> retrievalClearGear  =  new ArrayList<>();
+    ArrayList<String> retrievalDropGear  =  new ArrayList<>();
+    ArrayList<String> gearStuckBot  =  new ArrayList<>();
+    ArrayList<String> avoidChoke  =  new ArrayList<>();
+    //ArrayList<String> truePHolder6  =  new ArrayList<>();
+
     ArrayList<String> pl = new ArrayList<>();
     public static boolean[] layoutBools = new boolean[4];
     public static ArrayList<ArrayList<String>> matchList = new ArrayList<>();
@@ -81,9 +89,10 @@ public class MainActivity extends AppCompatActivity {
             " AutoLowDumps "," AutoHighShots "," AutoAccuracy"," AutoTooFast ",
             " TeleLowDumps "," TeleHighShots "," HighCycles "," TeleAccuracy ",
             " TeleTooFast "," Stuck "," Tipped "," Dead "," Intermittent ",
-            " Notes "};
-    final static boolean[] matchBool = new boolean[32];
-    final static boolean[] avgBool = new boolean[32];
+            " Notes ","RetrievalFouls","RetrievalClearedGears","RetrievalDroppedGear","GearJams",
+            "AvoidedChokeZones"};//,"Placeholder"};
+    final static boolean[] matchBool = new boolean[37];
+    final static boolean[] avgBool = new boolean[37];
     final ArrayList<Integer> selectedItems = new ArrayList<>();//USED ONLY IN THE FILTERING METHOD
 
     @Override
@@ -356,6 +365,14 @@ public class MainActivity extends AppCompatActivity {
             ded.add("Dead");
             intermitt.add("Intermittent");
             note.add("Notes");
+
+            retrievalFoul.add("Placeholder");
+            retrievalClearGear.add("Placeholder");
+            retrievalDropGear.add("Placeholder");
+            gearStuckBot.add("Placeholder");
+            avoidChoke.add("Placeholder");
+            //truePHolder6.add("Placeholder");
+
             for(int r = 0; r < rows.length(); ++r){
                 JSONObject row = rows.getJSONObject(r);
                 JSONArray columns = row.getJSONArray("c");
@@ -474,6 +491,26 @@ public class MainActivity extends AppCompatActivity {
                 String inte = Integer.toString(intermittent);
 
                 String notes = columns.getJSONObject(41).getString("v");
+
+                
+                int rzF = columns.getJSONObject(44).getInt("v");
+                String rzFoul = Integer.toString(rzF);
+                
+                int rzCG = columns.getJSONObject(42).getInt("v");
+                String rzClear = Integer.toString(rzCG);
+                
+                int rzD = columns.getJSONObject(43).getInt("v");
+                String rzDrop = Integer.toString(rzD);
+                
+                int true4 = columns.getJSONObject(45).getInt("v");
+                String truePlace4 = Integer.toString(true4);
+                
+                int true5 = columns.getJSONObject(46).getInt("v");
+                String truePlace5 = Integer.toString(true5);
+                
+                //String truePlace6 = columns.getJSONObject(47?).getString("v");
+
+
                 teamNum.add(tem);
                 matchNum.add(mat);
                 goodPick.add(secPic);
@@ -515,6 +552,13 @@ public class MainActivity extends AppCompatActivity {
                 ded.add(daed);
                 intermitt.add(inte);
                 note.add(notes);
+
+                retrievalFoul.add(rzFoul);
+                retrievalClearGear.add(rzClear);
+                retrievalDropGear.add(rzDrop);
+                gearStuckBot.add(truePlace4);
+                avoidChoke.add(truePlace5);
+                //truePHolder6.add(truePlace6);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -538,6 +582,9 @@ public class MainActivity extends AppCompatActivity {
         matchList.add(hopper4Tele);
         matchList.add(hopper5Tele);
         matchList.add(cross);
+
+        //matchList.add(truePHolder6);
+
         matchList.add(lowDumpAuto);
         matchList.add(highShotsAuto);
         matchList.add(highAccAuto);
@@ -548,6 +595,11 @@ public class MainActivity extends AppCompatActivity {
         matchList.add(highAccTele);
         matchList.add(tooFastTele);
         matchList.add(gearFailT);
+
+        matchList.add(retrievalFoul);
+        matchList.add(retrievalClearGear);
+        matchList.add(retrievalDropGear);
+
         matchList.add(gearPerPeg1);
         matchList.add(gearPerPeg2);
         matchList.add(gearPerPeg3);
@@ -559,9 +611,13 @@ public class MainActivity extends AppCompatActivity {
         matchList.add(tipp);
         matchList.add(ded);
         matchList.add(intermitt);
+
+        matchList.add(gearStuckBot);
+        matchList.add(avoidChoke);
+
         matchList.add(note);
 
-        for(int i = 40; i < teamNum.size() - 1; i++){
+        for(int i = 46; i < teamNum.size() - 1; i++){
             matchList.add(pl);
         }
 
@@ -584,7 +640,7 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
     }
 
-    public void processAVG(JSONObject object){
+    public void processAVG(JSONObject object){ //TODO: SEE IF PLACEHOLDERS ARE NEEDED IN processAVG()
         try {
             JSONArray rows = object.getJSONArray("rows");
             teamNum.add("Team#");
