@@ -244,6 +244,30 @@
             android:textColor="#999900" />
 
         <TextView
+            android:id="@+id/retrieveFoul"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="RetrieveFoul"
+            android:textColor="#00FF00"/>
+
+        <TextView
+            android:id="@+id/retrieveGear"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="RetrieveGear"
+            android:textColor="#0000FF"/>
+
+        <TextView
+            android:id="@+id/retrieveDropped"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="RetrieveDropped"
+            android:textColor="#9400D3"/>
+
+        <TextView
             android:id="@+id/gearPer1"
             android:layout_width="75dp"
             android:layout_height="50dp"
@@ -330,6 +354,22 @@
             android:layout_weight="0.5"
             android:text="ChevalTime"
             android:textColor="#FF7F00" />
+
+        <TextView
+            android:id="@+id/canNotHandleThese"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="GearGotStuck"
+            android:textColor="#FF0000"/>
+
+        <TextView
+            android:id="@+id/didNotChoke"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="NotStuckInChokePoint"
+            android:textColor="#FF7F00"/>
 
         <TextView
             android:id="@+id/additionalNotes"

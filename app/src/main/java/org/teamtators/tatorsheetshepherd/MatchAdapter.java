@@ -61,6 +61,13 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
     TextView tooFastAuto;
     TextView tooFastTele;
 
+    TextView rzFoul; //TODO: PLACEHOLDERS
+    TextView rzClearGear;
+    TextView rzDropGear;
+    TextView gearsStuck;
+    TextView noChoking;
+    TextView trueHolder6;
+
 
     boolean[] matchBools = MainActivity.matchBool;
 
@@ -129,6 +136,13 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         ded = (TextView) v.findViewById(R.id.didDie);
         note = (TextView) v.findViewById(R.id.additionalNotes);
         intermitt = (TextView) v.findViewById(R.id.wasIntermittent);
+
+        rzFoul = (TextView) v.findViewById(R.id.retrieveFoul);
+        rzClearGear = (TextView) v.findViewById(R.id.retrieveGear);
+        rzDropGear = (TextView) v.findViewById(R.id.retrieveDropped);
+        gearsStuck = (TextView) v.findViewById(R.id.canNotHandleThese);
+        noChoking = (TextView) v.findViewById(R.id.didNotChoke);
+        //trueHolder6 = (TextView) v.findViewById(R.id.placeholder6);
 
 
         teamNum.setWidth(200);
@@ -313,17 +327,54 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         } else { intermitt.setWidth(200);}
 
         if(!matchBools[31]){
-            //note.setWidth(0);
             note.setHeight(0);
             note.setTextColor(0);
         } else {
             note.setWidth(600);
         }
 
+        if (!matchBools[32]) {
+            rzFoul.setWidth(0);
+            rzFoul.setTextColor(0);
+        } else {
+            rzFoul.setWidth(200);
+        }
+        if (!matchBools[33]) {
+            rzClearGear.setWidth(0);
+            rzClearGear.setTextColor(0);
+        } else {
+            rzClearGear.setWidth(200);
+        }
+        if (!matchBools[34]) {
+            rzDropGear.setWidth(0);
+            rzDropGear.setTextColor(0);
+        } else {
+            rzDropGear.setWidth(200);
+        }
+        if (!matchBools[35]) {
+            gearsStuck.setWidth(0);
+            gearsStuck.setTextColor(0);
+        } else {
+            gearsStuck.setWidth(200);
+        }
+        if (!matchBools[36]) {
+            noChoking.setWidth(0);
+            noChoking.setTextColor(0);
+        } else {
+            noChoking.setWidth(200);
+        }
+        /*if (!matchBools[37]) {
+            trueHolder6.setWidth(0);
+            trueHolder6.setTextColor(0);
+        } else {
+            trueHolder6.setWidth(200);
+        }*/
+
+
         teamNum.setText(matchShow.get(0).get(position));
         matchNum.setText(matchShow.get(1).get(position));
         goodPick.setText(matchShow.get(2).get(position));
-        if(matchBools[15]) scouter.setText(matchShow.get(3).get(position));
+        scouter.setText(matchShow.get(3).get(position));
         starting.setText(matchShow.get(4).get(position));
         color.setText(matchShow.get(5).get(position));
         noGears.setText(matchShow.get(6).get(position));
@@ -349,18 +400,27 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         highAccTele.setText(matchShow.get(26).get(position));
         tooFastTele.setText(matchShow.get(27).get(position));
         gearFailT.setText(matchShow.get(28).get(position));
-        gearPerPeg1.setText(matchShow.get(29).get(position));
-        gearPerPeg2.setText(matchShow.get(30).get(position));
-        gearPerPeg3.setText(matchShow.get(31).get(position));
-        defend.setText(matchShow.get(32).get(position));
-        defenseRating.setText(matchShow.get(33).get(position));
-        scale.setText(matchShow.get(34).get(position));
-        stuc.setText(matchShow.get(36).get(position));
-        scaleFailed.setText(matchShow.get(35).get(position));
-        tipp.setText(matchShow.get(37).get(position));
-        ded.setText(matchShow.get(38).get(position));
-        intermitt.setText(matchShow.get(39).get(position));
-        if(matchBools[31]) note.setText(matchShow.get(40).get(position));
+
+        rzFoul.setText(matchShow.get(29).get(position));
+        rzClearGear.setText(matchShow.get(30).get(position));
+        rzDropGear.setText(matchShow.get(31).get(position));
+
+        gearPerPeg1.setText(matchShow.get(32).get(position));
+        gearPerPeg2.setText(matchShow.get(33).get(position));
+        gearPerPeg3.setText(matchShow.get(34).get(position));
+        defend.setText(matchShow.get(35).get(position));
+        defenseRating.setText(matchShow.get(36).get(position));
+        scale.setText(matchShow.get(37).get(position));
+        stuc.setText(matchShow.get(38).get(position));
+        scaleFailed.setText(matchShow.get(39).get(position));
+        tipp.setText(matchShow.get(40).get(position));
+        ded.setText(matchShow.get(41).get(position));
+        intermitt.setText(matchShow.get(42).get(position));
+
+        gearsStuck.setText(matchShow.get(43).get(position));
+        noChoking.setText(matchShow.get(44).get(position));
+
+        note.setText(matchShow.get(45).get(position));
 
         return v;
     }
