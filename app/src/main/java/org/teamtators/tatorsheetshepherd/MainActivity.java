@@ -660,7 +660,7 @@ public class MainActivity extends AppCompatActivity {
             defenseRating.add("DefensiveRating");
 
 
-            for(int r = 2; r < rows.length(); r++){
+            for(int r = 1; r < rows.length(); r++){
                 JSONObject row = rows.getJSONObject(r);
                 JSONArray columns = row.getJSONArray("c");
 

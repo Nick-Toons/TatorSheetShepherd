@@ -89,7 +89,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Defense"
-            android:textColor="#22ff00" />
+            android:textColor="#22AA00" />
 
         <TextView
             android:id="@+id/defenseRate"
