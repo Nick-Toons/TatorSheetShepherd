@@ -49,7 +49,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="LineCrossed"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/gearDrop"
@@ -81,7 +81,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Peg3Gears"
-            android:textColor="#00FFFF" />
+            android:textColor="#00AAAA" />
 
         <TextView
             android:id="@+id/didDefense"

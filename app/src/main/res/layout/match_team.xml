@@ -49,7 +49,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.07"
             android:text="Starting"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/alliance"
@@ -97,7 +97,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="AutoHopper2"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/hopper3A"
@@ -145,7 +145,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="AutoHighAccuracy"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/tooFastA"
@@ -201,7 +201,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="TeleLowDumps"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/highTele"
@@ -249,7 +249,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="RetrieveFoul"
-            android:textColor="#00FF00"/>
+            android:textColor="#00AA00"/>
 
         <TextView
             android:id="@+id/retrieveGear"
@@ -273,7 +273,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="Peg1Gears"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/gearPer2"
@@ -321,7 +321,7 @@
             android:layout_height="50dp"
             android:layout_weight="0.5"
             android:text="FailedScale"
-            android:textColor="#00FF00" />
+            android:textColor="#00AA00" />
 
         <TextView
             android:id="@+id/gotStuck"

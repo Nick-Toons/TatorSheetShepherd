@@ -2,43 +2,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="org.teamtators.tatorsheetshepherd.MainActivity">
 
     <GridView
         android:id="@+id/listview"
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
-        android:layout_marginTop="110dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnDownloadMatch"/>
 
     <Button
         android:id="@+id/btnDownloadMatch"
         android:enabled="false"
-        android:onClick="buttonMatchHandler"
         android:layout_width="match_parent"
+        android:onClick="buttonMatchHandler"
         android:layout_height="wrap_content"
         android:text="DOWNLOAD MATCH TABLE"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="565dp"
-        android:layout_marginLeft="190dp" />
+        android:layout_below="@+id/btnDownloadAvg"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp" />
 
     <Button
         android:id="@+id/btnDownloadAvg"
         android:enabled="false"
-        android:onClick="buttonAvgHandler"
         android:layout_width="match_parent"
+        android:onClick="buttonAvgHandler"
         android:layout_height="wrap_content"
         android:text="DOWNLOAD AVERAGE TABLE"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="565dp"
-        android:layout_marginRight="190dp" />
+        android:layout_below="@+id/btnClear"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"/>
 
     <Button
         android:id="@+id/btnClear"
@@ -47,11 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CLEAR DATA"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="515dp"
-        android:layout_marginRight="190dp"/>
+        android:layout_below="@+id/btnFilter"/>
 
     <Button
         android:id="@+id/btnFilter"
@@ -59,12 +47,7 @@
         android:onClick="buttonFilterHandler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FILTER"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="515dp"
-        android:layout_marginLeft="190dp"/>
+        android:text="FILTER" />
 
 
 </RelativeLayout>

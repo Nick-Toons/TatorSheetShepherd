@@ -100,18 +100,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
                 == Configuration.SCREENLAYOUT_SIZE_SMALL) {
-            setContentView(R.layout.activity_main_small);
+            setContentView(R.layout.activity_main);
         } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
                 == Configuration.SCREENLAYOUT_SIZE_NORMAL){
             setContentView(R.layout.activity_main);
         } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
                 == Configuration.SCREENLAYOUT_SIZE_LARGE){
-            setContentView(R.layout.activity_main_large);
+            setContentView(R.layout.activity_main);
         } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
                 == Configuration.SCREENLAYOUT_SIZE_XLARGE){
-            setContentView(R.layout.activity_main_xlarge);
+            setContentView(R.layout.activity_main);
         } else {
-            setContentView(R.layout.activity_main_small);
+            setContentView(R.layout.activity_main);
         }
         listview = (GridView) findViewById(R.id.listview);
         btnDownloadMatch = (Button) findViewById(R.id.btnDownloadMatch);
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResult(JSONObject object) {
                 processMatch(object);
             }
-        }).execute("https://spreadsheets.google.com/tq?key=1I7u5JiijpOV7-A_RJ-mEj0pqZ0Ib_P5l6UEmY08y8Ec");
+        }).execute("https://spreadsheets.google.com/tq?key=1j95MSzB2gVebuPpJT0AVd_0NvbcvqtXmqhytMKfS4J0");
     }
 
     public void buttonMatchForFilter(View view) {
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResult(JSONObject object) {
                 processMatch(object);
             }
-        }).execute("https://spreadsheets.google.com/tq?key=1I7u5JiijpOV7-A_RJ-mEj0pqZ0Ib_P5l6UEmY08y8Ec");
+        }).execute("https://spreadsheets.google.com/tq?key=1j95MSzB2gVebuPpJT0AVd_0NvbcvqtXmqhytMKfS4J0");
     }
 
     public void buttonAvgHandler(View view){
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResult(JSONObject object) {
                 processAVG(object);
             }
-        }).execute("https://spreadsheets.google.com/tq?key=1FmHbyJdwfM2PFNkcHMjHN4sPD5UJXExNs_nWbC5MLRM");
+        }).execute("https://spreadsheets.google.com/tq?key=1GhBUrw-7G0Mm6U0SmcU11m9Z9juLxwFAY46SsW7r-r8");
     }
     public void buttonAvgForFilter(View view){
         new DownloadWebpage(new AsyncResult() {
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResult(JSONObject object) {
                 processAVG(object);
             }
-        }).execute("https://spreadsheets.google.com/tq?key=1FmHbyJdwfM2PFNkcHMjHN4sPD5UJXExNs_nWbC5MLRM");
+        }).execute("https://spreadsheets.google.com/tq?key=1GhBUrw-7G0Mm6U0SmcU11m9Z9juLxwFAY46SsW7r-r8");
     }
 
 
@@ -559,6 +559,8 @@ public class MainActivity extends AppCompatActivity {
                 gearStuckBot.add(truePlace4);
                 avoidChoke.add(truePlace5);
                 //truePHolder6.add(truePlace6);
+
+                pl.add("");
             }
         } catch (JSONException e) {
             e.printStackTrace();
