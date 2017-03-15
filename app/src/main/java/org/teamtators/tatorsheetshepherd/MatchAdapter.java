@@ -61,7 +61,7 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
     TextView tooFastAuto;
     TextView tooFastTele;
 
-    TextView rzFoul; //TODO: PLACEHOLDERS
+    TextView rzFoul;
     TextView rzClearGear;
     TextView rzDropGear;
     TextView gearsStuck;
@@ -82,13 +82,13 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         View v = convertView;
         if (v == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if(MainActivity.layoutBools[0]){
+            if (MainActivity.layoutBools[0]) {
                 v = vi.inflate(R.layout.match_team_small, null);
-            } else if (MainActivity.layoutBools[1]){
+            } else if (MainActivity.layoutBools[1]) {
                 v = vi.inflate(R.layout.match_team, null);
-            } else if (MainActivity.layoutBools[2]){
+            } else if (MainActivity.layoutBools[2]) {
                 v = vi.inflate(R.layout.match_team_large, null);
-            } else if (MainActivity.layoutBools[3]){
+            } else if (MainActivity.layoutBools[3]) {
                 v = vi.inflate(R.layout.match_team_xlarge, null);
             } else {
                 v = vi.inflate(R.layout.match_team_small, null);
@@ -144,49 +144,82 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
         noChoking = (TextView) v.findViewById(R.id.didNotChoke);
         //trueHolder6 = (TextView) v.findViewById(R.id.placeholder6);
 
+        teamNum.setText(matchShow.get(0).get(position));
 
         teamNum.setWidth(200);
-        if(!matchBools[1]) {
+        if (!matchBools[1]) {
             matchNum.setWidth(0);
             matchNum.setTextColor(0);
-        } else { matchNum.setWidth(200); }
+            matchNum.setText("");
+        } else {
+            matchNum.setWidth(200);
+            matchNum.setText(matchShow.get(1).get(position));
+        }
 
-        if(!matchBools[2]) {
+        if (!matchBools[2]) {
             goodPick.setWidth(0);
             goodPick.setTextColor(0);
-        } else { goodPick.setWidth(200); }
+            goodPick.setText("");
+        } else {
+            goodPick.setWidth(200);
+            goodPick.setText(matchShow.get(2).get(position));
+        }
 
-        if(!matchBools[15]) {
+        if (!matchBools[15]) {
             scouter.setWidth(0);
             scouter.setTextColor(0);
-        } else { scouter.setWidth(200); }
+            scouter.setText("");
+        } else {
+            scouter.setWidth(200);
+            scouter.setText(matchShow.get(3).get(position));
+        }
 
-        if(!matchBools[14]) {
+        if (!matchBools[14]) {
             starting.setWidth(0);
             starting.setTextColor(0);
-        } else { starting.setWidth(200); }
+            starting.setText("");
+        } else {
+            starting.setWidth(200);
+            starting.setText(matchShow.get(4).get(position));
+        }
 
-        if(!matchBools[17]) {
+        if (!matchBools[17]) {
             color.setWidth(0);
             color.setTextColor(0);
-        } else { color.setWidth(200); }
+            color.setText("");
+        } else {
+            color.setWidth(200);
+            color.setText(matchShow.get(5).get(position));
+        }
 
-        if(!matchBools[6]) {
+        if (!matchBools[6]) {
             noGears.setWidth(0);
             noGears.setTextColor(0);
-        } else { noGears.setWidth(200); }
+            noGears.setText("");
+        } else {
+            noGears.setWidth(200);
+            noGears.setText(matchShow.get(6).get(position));
+        }
 
-        if(!matchBools[4]) {
+        if (!matchBools[4]) {
             gearFailA.setWidth(0);
             gearFailA.setTextColor(0);
-        } else { gearFailA.setWidth(200); }
+            gearFailA.setText("");
+        } else {
+            gearFailA.setWidth(200);
+            gearFailA.setText(matchShow.get(7).get(position));
+        }
 
-        if(!matchBools[3]) {
+        if (!matchBools[3]) {
             gearPlace.setWidth(0);
             gearPlace.setTextColor(0);
-        } else { gearPlace.setWidth(200); }
+            gearPlace.setText("");
+        } else {
+            gearPlace.setWidth(200);
+            gearPlace.setText(matchShow.get(8).get(position));
+        }
 
-        if(!matchBools[16]) {
+        if (!matchBools[16]) {
             hopper1Auto.setWidth(0);
             hopper2Auto.setWidth(0);
             hopper3Auto.setWidth(0);
@@ -205,6 +238,15 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             hopper3Tele.setTextColor(0);
             hopper4Tele.setTextColor(0);
             hopper5Tele.setTextColor(0);
+            hopper1Auto.setText("");
+            hopper2Auto.setText("");
+            hopper3Auto.setText("");
+            hopper4Auto.setText("");
+            hopper1Tele.setText("");
+            hopper2Tele.setText("");
+            hopper3Tele.setText("");
+            hopper4Tele.setText("");
+            hopper5Tele.setText("");
         } else {
             hopper1Auto.setWidth(200);
             hopper2Auto.setWidth(200);
@@ -215,212 +257,268 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             hopper3Tele.setWidth(200);
             hopper4Tele.setWidth(200);
             hopper5Tele.setWidth(200);
+            hopper1Auto.setText(matchShow.get(9).get(position));
+            hopper2Auto.setText(matchShow.get(10).get(position));
+            hopper3Auto.setText(matchShow.get(11).get(position));
+            hopper4Auto.setText(matchShow.get(12).get(position));
+            hopper1Tele.setText(matchShow.get(13).get(position));
+            hopper2Tele.setText(matchShow.get(14).get(position));
+            hopper3Tele.setText(matchShow.get(15).get(position));
+            hopper4Tele.setText(matchShow.get(16).get(position));
+            hopper5Tele.setText(matchShow.get(17).get(position));
         }
 
-        if(!matchBools[5]){
+        if (!matchBools[5]) {
             cross.setWidth(0);
             cross.setTextColor(0);
-        } else { cross.setWidth(200);}
+            cross.setText("");
+        } else {
+            cross.setWidth(200);
+            cross.setText(matchShow.get(18).get(position));
+        }
 
-        if(!matchBools[18]){
+        if (!matchBools[18]) {
             lowDumpAuto.setWidth(0);
             lowDumpAuto.setTextColor(0);
-        } else { lowDumpAuto.setWidth(200);}
+            lowDumpAuto.setText("");
+        } else {
+            lowDumpAuto.setWidth(200);
+            lowDumpAuto.setText(matchShow.get(19).get(position));
+        }
 
-        if(!matchBools[19]){
+        if (!matchBools[19]) {
             highShotsAuto.setWidth(0);
             highShotsAuto.setTextColor(0);
-        } else {highShotsAuto.setWidth(200);}
+            highShotsAuto.setText("");
+        } else {
+            highShotsAuto.setWidth(200);
+            highShotsAuto.setText(matchShow.get(20).get(position));
+        }
 
-        if(!matchBools[20]){
+        if (!matchBools[20]) {
             highAccAuto.setWidth(0);
             highAccAuto.setTextColor(0);
-        } else { highAccAuto.setWidth(200);}
+            highAccAuto.setText("");
+        } else {
+            highAccAuto.setWidth(200);
+            highAccAuto.setText(matchShow.get(21).get(position));
+        }
 
-        if(!matchBools[21]){
+        if (!matchBools[21]) {
             tooFastAuto.setWidth(0);
             tooFastAuto.setTextColor(0);
-        } else { tooFastAuto.setWidth(200);}
+            tooFastAuto.setText("");
+        } else {
+            tooFastAuto.setWidth(200);
+            tooFastAuto.setText(matchShow.get(22).get(position));
+        }
 
-        if(!matchBools[22]){
+        if (!matchBools[22]) {
             lowDumpTele.setWidth(0);
             lowDumpTele.setTextColor(0);
-        } else { lowDumpTele.setWidth(200);}
+            lowDumpTele.setText("");
+        } else {
+            lowDumpTele.setWidth(200);
+            lowDumpTele.setText(matchShow.get(23).get(position));
+        }
 
-        if(!matchBools[23]){
+        if (!matchBools[23]) {
             highShotsTele.setWidth(0);
             highShotsTele.setTextColor(0);
-        } else { highShotsTele.setWidth(200);}
+            highShotsTele.setText("");
+        } else {
+            highShotsTele.setWidth(200);
+            highShotsTele.setText(matchShow.get(24).get(position));
+        }
 
-        if(!matchBools[24]){
+        if (!matchBools[24]) {
             highCyclesTele.setWidth(0);
             highCyclesTele.setTextColor(0);
-        } else { highCyclesTele.setWidth(200);}
+            highCyclesTele.setText("");
+        } else {
+            highCyclesTele.setWidth(200);
+            highCyclesTele.setText(matchShow.get(25).get(position));
+        }
 
-        if(!matchBools[25]){
+        if (!matchBools[25]) {
             highAccTele.setWidth(0);
             highAccTele.setTextColor(0);
-        } else { highAccTele.setWidth(200);}
+            highAccTele.setText("");
+        } else {
+            highAccTele.setWidth(200);
+            highAccTele.setText(matchShow.get(26).get(position));
+        }
 
-        if(!matchBools[26]){
+        if (!matchBools[26]) {
             tooFastTele.setWidth(0);
             tooFastTele.setTextColor(0);
-        } else { tooFastTele.setWidth(200);}
+            tooFastTele.setText("");
+        } else {
+            tooFastTele.setWidth(200);
+            tooFastTele.setText(matchShow.get(27).get(position));
+        }
 
-        if(!matchBools[10]){
+        if (!matchBools[10]) {
             gearFailT.setWidth(0);
             gearFailT.setTextColor(0);
-        } else { gearFailT.setWidth(200);}
+            gearFailT.setText("");
+        } else {
+            gearFailT.setWidth(200);
+            gearFailT.setText(matchShow.get(28).get(position));
+        }
 
-        if(!matchBools[7]){
+        if (!matchBools[7]) {
             gearPerPeg1.setWidth(0);
             gearPerPeg1.setTextColor(0);
-        } else { gearPerPeg1.setWidth(200);}
+            gearPerPeg1.setText("");
+        } else {
+            gearPerPeg1.setWidth(200);
+            gearPerPeg1.setText(matchShow.get(34).get(position));
+        }
 
-        if(!matchBools[8]){
+        if (!matchBools[8]) {
             gearPerPeg2.setWidth(0);
             gearPerPeg2.setTextColor(0);
-        } else { gearPerPeg2.setWidth(200);}
+            gearPerPeg2.setText("");
+        } else {
+            gearPerPeg2.setWidth(200);
+            gearPerPeg2.setText(matchShow.get(34).get(position));
+        }
 
-        if(!matchBools[9]){
+        if (!matchBools[9]) {
             gearPerPeg3.setWidth(0);
             gearPerPeg3.setTextColor(0);
-        } else { gearPerPeg3.setWidth(200);}
+            gearPerPeg3.setText("");
+        } else {
+            gearPerPeg3.setWidth(200);
+            gearPerPeg3.setText(matchShow.get(34).get(position));
+        }
 
-        if(!matchBools[11]){
+        if (!matchBools[11]) {
             defend.setWidth(0);
             defend.setTextColor(0);
-        } else { defend.setWidth(200);}
+            defend.setText("");
+        } else {
+            defend.setWidth(200);
+            defend.setText(matchShow.get(35).get(position));
+        }
 
-        if(!matchBools[12]){
+        if (!matchBools[12]) {
             defenseRating.setWidth(0);
             defenseRating.setTextColor(0);
-        } else { defenseRating.setWidth(200);}
+            defenseRating.setText("");
+        } else {
+            defenseRating.setWidth(200);
+            defenseRating.setText(matchShow.get(36).get(position));
+        }
 
-        if(!matchBools[13]){
+        if (!matchBools[13]) {
             scale.setWidth(0);
             scale.setTextColor(0);
             scaleFailed.setWidth(0);
             scaleFailed.setTextColor(0);
+            scale.setText("");
+            scaleFailed.setText("");
         } else {
             scale.setWidth(200);
             scaleFailed.setWidth(200);
+            scale.setText(matchShow.get(37).get(position));
+            scaleFailed.setText(matchShow.get(38).get(position));
         }
 
-        if(!matchBools[27]){
+        if (!matchBools[27]) {
             stuc.setWidth(0);
             stuc.setTextColor(0);
-        } else { stuc.setWidth(200);}
+            stuc.setText("");
+        } else {
+            stuc.setWidth(200);
+            stuc.setText(matchShow.get(39).get(position));
+        }
 
-        if(!matchBools[28]){
+        if (!matchBools[28]) {
             tipp.setWidth(0);
             tipp.setTextColor(0);
-        } else { tipp.setWidth(200);}
+            tipp.setText("");
+        } else {
+            tipp.setWidth(200);
+            tipp.setText(matchShow.get(40).get(position));
+        }
 
-        if(!matchBools[29]){
+        if (!matchBools[29]) {
             ded.setWidth(0);
-            ded.setTextColor(0);} else { ded.setWidth(200);}
+            ded.setTextColor(0);
+            ded.setText("");
+        } else {
+            ded.setWidth(200);
+            ded.setText(matchShow.get(41).get(position));
+        }
 
-        if(!matchBools[30]){
+        if (!matchBools[30]) {
             intermitt.setWidth(0);
             intermitt.setTextColor(0);
-        } else { intermitt.setWidth(200);}
+            intermitt.setText("");
+        } else {
+            intermitt.setWidth(200);
+            intermitt.setText(matchShow.get(42).get(position));
+        }
 
-        if(!matchBools[31]){
+        if (!matchBools[31]) {
             note.setHeight(0);
             note.setTextColor(0);
+            note.setText("");
         } else {
             note.setWidth(600);
+            note.setText(matchShow.get(45).get(position));
         }
 
         if (!matchBools[32]) {
             rzFoul.setWidth(0);
             rzFoul.setTextColor(0);
+            rzFoul.setText("");
         } else {
             rzFoul.setWidth(200);
+            rzFoul.setText(matchShow.get(29).get(position));
         }
         if (!matchBools[33]) {
             rzClearGear.setWidth(0);
             rzClearGear.setTextColor(0);
+            rzClearGear.setText("");
         } else {
             rzClearGear.setWidth(200);
+            rzClearGear.setText(matchShow.get(30).get(position));
         }
         if (!matchBools[34]) {
             rzDropGear.setWidth(0);
             rzDropGear.setTextColor(0);
+            rzDropGear.setText("");
         } else {
             rzDropGear.setWidth(200);
+            rzDropGear.setText(matchShow.get(31).get(position));
         }
         if (!matchBools[35]) {
             gearsStuck.setWidth(0);
             gearsStuck.setTextColor(0);
+            gearsStuck.setText("");
         } else {
             gearsStuck.setWidth(200);
+            gearsStuck.setText(matchShow.get(43).get(position));
         }
         if (!matchBools[36]) {
             noChoking.setWidth(0);
             noChoking.setTextColor(0);
+            noChoking.setText("");
         } else {
             noChoking.setWidth(200);
+            noChoking.setText(matchShow.get(44).get(position));
         }
         /*if (!matchBools[37]) {
             trueHolder6.setWidth(0);
             trueHolder6.setTextColor(0);
+            starting.setText("");
         } else {
             trueHolder6.setWidth(200);
+            starting.setText(matchShow.get(4).get(position));
         }*/
-
-
-        teamNum.setText(matchShow.get(0).get(position));
-        matchNum.setText(matchShow.get(1).get(position));
-        goodPick.setText(matchShow.get(2).get(position));
-        scouter.setText(matchShow.get(3).get(position));
-        starting.setText(matchShow.get(4).get(position));
-        color.setText(matchShow.get(5).get(position));
-        noGears.setText(matchShow.get(6).get(position));
-        gearFailA.setText(matchShow.get(7).get(position));
-        gearPlace.setText(matchShow.get(8).get(position));
-        hopper1Auto.setText(matchShow.get(9).get(position));
-        hopper2Auto.setText(matchShow.get(10).get(position));
-        hopper3Auto.setText(matchShow.get(11).get(position));
-        hopper4Auto.setText(matchShow.get(12).get(position));
-        cross.setText(matchShow.get(18).get(position));
-        lowDumpAuto.setText(matchShow.get(19).get(position));
-        highShotsAuto.setText(matchShow.get(20).get(position));
-        highAccAuto.setText(matchShow.get(21).get(position));
-        tooFastAuto.setText(matchShow.get(22).get(position));
-        hopper1Tele.setText(matchShow.get(13).get(position));
-        hopper2Tele.setText(matchShow.get(14).get(position));
-        hopper3Tele.setText(matchShow.get(15).get(position));
-        hopper4Tele.setText(matchShow.get(16).get(position));
-        hopper5Tele.setText(matchShow.get(17).get(position));
-        lowDumpTele.setText(matchShow.get(23).get(position));
-        highShotsTele.setText(matchShow.get(24).get(position));
-        highCyclesTele.setText(matchShow.get(25).get(position));
-        highAccTele.setText(matchShow.get(26).get(position));
-        tooFastTele.setText(matchShow.get(27).get(position));
-        gearFailT.setText(matchShow.get(28).get(position));
-
-        rzFoul.setText(matchShow.get(29).get(position));
-        rzClearGear.setText(matchShow.get(30).get(position));
-        rzDropGear.setText(matchShow.get(31).get(position));
-
-        gearPerPeg1.setText(matchShow.get(32).get(position));
-        gearPerPeg2.setText(matchShow.get(33).get(position));
-        gearPerPeg3.setText(matchShow.get(34).get(position));
-        defend.setText(matchShow.get(35).get(position));
-        defenseRating.setText(matchShow.get(36).get(position));
-        scale.setText(matchShow.get(37).get(position));
-        stuc.setText(matchShow.get(38).get(position));
-        scaleFailed.setText(matchShow.get(39).get(position));
-        tipp.setText(matchShow.get(40).get(position));
-        ded.setText(matchShow.get(41).get(position));
-        intermitt.setText(matchShow.get(42).get(position));
-
-        gearsStuck.setText(matchShow.get(43).get(position));
-        noChoking.setText(matchShow.get(44).get(position));
-
-        note.setText(matchShow.get(45).get(position));
 
         return v;
     }
