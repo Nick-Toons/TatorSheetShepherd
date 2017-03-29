@@ -15,12 +15,15 @@ import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.EditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> highAccAuto   =  new ArrayList<>();
@@ -72,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> avoidChoke  =  new ArrayList<>();
     //ArrayList<String> truePHolder6  =  new ArrayList<>();
 
+    private int mSelected = -1;
+
+    public boolean metch = false;
+    public boolean ayvg = false;
+    public String indvTeam = "N/A";
     ArrayList<String> pl = new ArrayList<>();
     public static boolean[] layoutBools = new boolean[4];
     public static ArrayList<ArrayList<String>> matchList = new ArrayList<>();
@@ -81,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnDownloadAvg;
     Button btnClear;
     Button btnFilter;
-    final CharSequence[] filterTable = {" Team "," Match "," GoodPick ",
+    final CharSequence[] filterTable = {"View One Team "," Match "," GoodPick ",
             " AutoGearPlacement "," FailAutoGear "," CrossedLine ",
             " NoAutoGear "," GearsOnPeg1 "," GearsOnPeg2 "," GearsOnPeg3 ",
             " TeleGearFail "," DidDefense "," DefenseRating "," Scaled/Failed ",
@@ -90,7 +98,15 @@ public class MainActivity extends AppCompatActivity {
             " TeleLowDumps "," TeleHighShots "," HighCycles "," TeleAccuracy ",
             " TeleTooFast "," Stuck "," Tipped "," Dead "," Intermittent ",
             " Notes ","RetrievalFouls","RetrievalClearedGears","RetrievalDroppedGear","GearJams",
-            "AvoidedChokeZones"};//,"Placeholder"};
+            "AvoidedTraffic"};//,"Placeholder"};
+    final CharSequence[] smortTable = {" Match "," Good Pick "," Auto Gears ",
+            " Fail Auto Gears "," No Auto Gears"," Teleop Gears "," Fail Teleop Gears ",
+            " Did Defense "," Defense Rating "," Scaled Good "," Scaled Bad ",
+            " Hoppers "," Auto High Shots "," Auto Accuracy "," Teleop High Shots ",
+            " Teleop Accuracy "," Stuck "," Tipped "," Dead "," Intermittent ",
+            " Retrieval Fouls "," Cleared Gears "," Dropped Gears "," Gear Jams "," Avoided Traffic "};
+
+    final static boolean[] smortBool = new boolean[25];
     final static boolean[] matchBool = new boolean[37];
     final static boolean[] avgBool = new boolean[37];
     final ArrayList<Integer> selectedItems = new ArrayList<>();//USED ONLY IN THE FILTERING METHOD
@@ -131,6 +147,36 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "There is no network connection. Please connect " +
                     "to a network to use this application.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void singleTeamNumberHandler(View view){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Input a Team Number");
+        alert.setMessage("Hit 'Cancel' if you want to view all of the teams");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                indvTeam = input.getText().toString();
+                indvTeam = indvTeam.replaceAll("[^\\d.]", "");
+                if(indvTeam.equals("")) indvTeam = "N/A";
+                btnSort(listview);
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                indvTeam = "N/A";
+
+                btnSort(listview);
+            }
+        });
+        if(matchBool[0]) alert.show();
+        else btnSort(listview);
     }
 
     public void buttonMatchHandler(View view) {
@@ -176,9 +222,65 @@ public class MainActivity extends AppCompatActivity {
         }).execute("https://spreadsheets.google.com/tq?key=1GhBUrw-7G0Mm6U0SmcU11m9Z9juLxwFAY46SsW7r-r8");
     }
 
+    public void btnSort(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Not Yet Functional, Please Press 'No Thanks'");
+        //builder.setTitle("What would you like to sort by?");
+        builder.setMultiChoiceItems(smortTable, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if (isChecked) {
+                    if ((mSelected != -1) && (mSelected != which)) {
+                        smortBool[which] = true;
+                        final int oldVal = mSelected;
+                        smortBool[oldVal] = false;
+                        final AlertDialog alert = (AlertDialog)dialog;
+                        final ListView list = alert.getListView();
+                        list.setItemChecked(oldVal, false);
+                    }
+                    mSelected = which;
+                } else
+                    mSelected = -1;
+            }
+        });
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(metch){
+                    buttonMatchClearHandler(listview);
+                    buttonMatchForFilter(listview);
+                } else {
+                    buttonAVGClearHandler(listview);
+                    buttonAvgForFilter(listview);
+                }
+            }
+        });
+
+        builder.setNegativeButton("No Thanks", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(metch){
+                    buttonMatchClearHandler(listview);
+                    buttonMatchForFilter(listview);
+                } else {
+                    buttonAVGClearHandler(listview);
+                    buttonAvgForFilter(listview);
+                }
+            }
+        });
+        builder.create();
+        builder.show();
+    }
+
+    public void sortForSmortMatch(){
+    }
+
+
+    public void sortForSmortAVG(){
+    }
 
     public void buttonMatchClearHandler(View view){
-        int amountRemoved = matchList.size();
         for(ArrayList<String> match: matchList) {
             match.clear();
         }
@@ -227,7 +329,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonAVGClearHandler(View view){
-        int amountRemoved = avgList.size();
         for(ArrayList<String> avg: avgList) {
             avg.clear();
         }
@@ -305,16 +406,20 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Match Data", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                buttonMatchClearHandler(listview);
-                buttonMatchForFilter(listview);
+                singleTeamNumberHandler(listview);
+                metch = true;
+                ayvg = false;
+                indvTeam = "N/A";
             }
         });
 
         builder.setNegativeButton("Average Data", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                buttonAVGClearHandler(listview);
-                buttonAvgForFilter(listview);
+                singleTeamNumberHandler(listview);
+                ayvg = true;
+                metch = false;
+                indvTeam = "N/A";
             }
         });
         builder.create();
@@ -328,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
             matchNum.add("Match#");
             goodPick.add("GoodPick");
             scouter.add("Scouter");
-            starting.add("StartPos.");
+            starting.add("StartPos");
             color.add("Alliance");
             noGears.add("NoAutoGear");
             gearFailA.add("FailedGearAuto");
@@ -366,16 +471,17 @@ public class MainActivity extends AppCompatActivity {
             intermitt.add("Intermittent");
             note.add("Notes");
 
-            retrievalFoul.add("RZFoul");
-            retrievalClearGear.add("RZClearedGears");
-            retrievalDropGear.add("RZDroppedGears");
+            retrievalFoul.add("RetrievalZoneFoul");
+            retrievalClearGear.add("RetrievalZoneClearedGears");
+            retrievalDropGear.add("RetrievalZoneDroppedGears");
             gearStuckBot.add("GearsGotStuck");
-            avoidChoke.add("AvoidedChokePoint");
+            avoidChoke.add("AvoidedTrafficJam");
             //truePHolder6.add("Placeholder");
 
             for(int r = 0; r < rows.length(); ++r){
                 JSONObject row = rows.getJSONObject(r);
                 JSONArray columns = row.getJSONArray("c");
+
                 int team = columns.getJSONObject(0).getInt("v");
                 String tem = Integer.toString(team);
 
@@ -492,24 +598,23 @@ public class MainActivity extends AppCompatActivity {
 
                 String notes = columns.getJSONObject(41).getString("v");
 
-                
+
                 int rzF = columns.getJSONObject(44).getInt("v");
                 String rzFoul = Integer.toString(rzF);
-                
+
                 int rzCG = columns.getJSONObject(42).getInt("v");
                 String rzClear = Integer.toString(rzCG);
-                
+
                 int rzD = columns.getJSONObject(43).getInt("v");
                 String rzDrop = Integer.toString(rzD);
-                
+
                 int true4 = columns.getJSONObject(45).getInt("v");
                 String truePlace4 = Integer.toString(true4);
-                
+
                 int true5 = columns.getJSONObject(46).getInt("v");
                 String truePlace5 = Integer.toString(true5);
-                
-                //String truePlace6 = columns.getJSONObject(47?).getString("v");
 
+                //String truePlace6 = columns.getJSONObject(47?).getString("v");
 
                 teamNum.add(tem);
                 matchNum.add(mat);
@@ -565,6 +670,109 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        int test = teamNum.size();
+        for(int i = test - 1; i >= 1; i--){
+            if(indvTeam.equals("N/A") || teamNum.get(i).equals(indvTeam)) {
+            } else {
+                teamNum.remove(i);
+                matchNum.remove(i);
+                goodPick.remove(i);
+                scouter.remove(i);
+                starting.remove(i);
+                color.remove(i);
+                noGears.remove(i);
+                gearFailA.remove(i);
+                gearPlace.remove(i);
+                hopper1Auto.remove(i);
+                hopper2Auto.remove(i);
+                hopper3Auto.remove(i);
+                hopper4Auto.remove(i);
+                hopper1Tele.remove(i);
+                hopper2Tele.remove(i);
+                hopper3Tele.remove(i);
+                hopper4Tele.remove(i);
+                hopper5Tele.remove(i);
+                cross.remove(i);
+                lowDumpAuto.remove(i);
+                highShotsAuto.remove(i);
+                highAccAuto.remove(i);
+                tooFastAuto.remove(i);
+                lowDumpTele.remove(i);
+                highShotsTele.remove(i);
+                highCyclesTele.remove(i);
+                highAccTele.remove(i);
+                tooFastTele.remove(i);
+                gearFailT.remove(i);
+                retrievalFoul.remove(i);
+                retrievalClearGear.remove(i);
+                retrievalDropGear.remove(i);
+                gearPerPeg1.remove(i);
+                gearPerPeg2.remove(i);
+                gearPerPeg3.remove(i);
+                defend.remove(i);
+                defenseRating.remove(i);
+                scale.remove(i);
+                scaleFailed.remove(i);
+                stuc.remove(i);
+                tipp.remove(i);
+                ded.remove(i);
+                intermitt.remove(i);
+                gearStuckBot.remove(i);
+                avoidChoke.remove(i);
+            }
+        }
+
+        sortForSmortMatch();
+
+        for(int i = teamNum.size() - 1; i < 45; i++){
+            teamNum.add("");
+            matchNum.add("");
+            goodPick.add("");
+            scouter.add("");
+            starting.add("");
+            color.add("");
+            noGears.add("");
+            gearFailA.add("");
+            gearPlace.add("");
+            hopper1Auto.add("");
+            hopper2Auto.add("");
+            hopper3Auto.add("");
+            hopper4Auto.add("");
+            hopper1Tele.add("");
+            hopper2Tele.add("");
+            hopper3Tele.add("");
+            hopper4Tele.add("");
+            hopper5Tele.add("");
+            cross.add("");
+            lowDumpAuto.add("");
+            highShotsAuto.add("");
+            highAccAuto.add("");
+            tooFastAuto.add("");
+            lowDumpTele.add("");
+            highShotsTele.add("");
+            highCyclesTele.add("");
+            highAccTele.add("");
+            tooFastTele.add("");
+            gearFailT.add("");
+            retrievalFoul.add("");
+            retrievalClearGear.add("");
+            retrievalDropGear.add("");
+            gearPerPeg1.add("");
+            gearPerPeg2.add("");
+            gearPerPeg3.add("");
+            defend.add("");
+            defenseRating.add("");
+            scale.add("");
+            scaleFailed.add("");
+            stuc.add("");
+            tipp.add("");
+            ded.add("");
+            intermitt.add("");
+            gearStuckBot.add("");
+            avoidChoke.add("");
+            pl.add("");
+        }
+
         matchList.add(teamNum);
         matchList.add(matchNum);
         matchList.add(goodPick);
@@ -640,6 +848,7 @@ public class MainActivity extends AppCompatActivity {
             adapter = new MatchAdapter(this, R.layout.match_team, matchList);
         }
         listview.setAdapter(adapter);
+        indvTeam = "N/A";
     }
 
     public void processAVG(JSONObject object){ //TODO: SEE IF PLACEHOLDERS ARE NEEDED IN processAVG()
@@ -664,7 +873,8 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject row = rows.getJSONObject(r);
                 JSONArray columns = row.getJSONArray("c");
 
-                String tem = columns.getJSONObject(0).getString("v");
+                int team = columns.getJSONObject(0).getInt("v");
+                String tem = Integer.toString(team);
 
                 int match = columns.getJSONObject(1).getInt("v");
                 String mat = Integer.toString(match);
@@ -722,6 +932,45 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        int test = teamNum.size();
+        for(int i = test - 1; i >= 1; i--) {
+            if (indvTeam.equals("N/A") || teamNum.get(i).equals(indvTeam)) {
+            } else {
+                teamNum.remove(i);
+                matchNum.remove(i);
+                gearFailA.remove(i);
+                gearPlace.remove(i);
+                cross.remove(i);
+                gearFailT.remove(i);
+                gearPerPeg1.remove(i);
+                gearPerPeg2.remove(i);
+                gearPerPeg3.remove(i);
+                defend.remove(i);
+                defenseRating.remove(i);
+                scale.remove(i);
+                scaleFailed.remove(i);
+            }
+        }
+
+        sortForSmortAVG();
+
+        for(int i = teamNum.size() - 1; i < 45; i++){
+            teamNum.add("");
+            matchNum.add("");
+            gearFailA.add("");
+            gearPlace.add("");
+            cross.add("");
+            gearFailT.add("");
+            gearPerPeg1.add("");
+            gearPerPeg2.add("");
+            gearPerPeg3.add("");
+            defend.add("");
+            defenseRating.add("");
+            scale.add("");
+            scaleFailed.add("");
+        }
+
         avgList.add(teamNum);
         avgList.add(matchNum);
         avgList.add(gearFailA);
@@ -757,6 +1006,6 @@ public class MainActivity extends AppCompatActivity {
             adapter = new AVGAdapter(this, R.layout.avg_team, avgList);
         }
         listview.setAdapter(adapter);
-
+        indvTeam = "N/A";
     }
 }

@@ -373,7 +373,7 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             gearPerPeg1.setText("");
         } else {
             gearPerPeg1.setWidth(200);
-            gearPerPeg1.setText(matchShow.get(34).get(position));
+            gearPerPeg1.setText(matchShow.get(32).get(position));
         }
 
         if (!matchBools[8]) {
@@ -382,7 +382,7 @@ public class MatchAdapter extends ArrayAdapter<ArrayList<String>> {
             gearPerPeg2.setText("");
         } else {
             gearPerPeg2.setWidth(200);
-            gearPerPeg2.setText(matchShow.get(34).get(position));
+            gearPerPeg2.setText(matchShow.get(33).get(position));
         }
 
         if (!matchBools[9]) {
