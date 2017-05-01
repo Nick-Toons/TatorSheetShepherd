@@ -12,7 +12,6 @@
 
     <Button
         android:id="@+id/btnDownloadMatch"
-        android:enabled="false"
         android:layout_width="match_parent"
         android:onClick="buttonMatchHandler"
         android:layout_height="wrap_content"
@@ -23,7 +22,6 @@
 
     <Button
         android:id="@+id/btnDownloadAvg"
-        android:enabled="false"
         android:layout_width="match_parent"
         android:onClick="buttonAvgHandler"
         android:layout_height="wrap_content"
@@ -35,6 +33,7 @@
     <Button
         android:id="@+id/btnClear"
         android:enabled="true"
+        android:background="#fc8f8f"
         android:onClick="buttonMatchClearHandler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +42,6 @@
 
     <Button
         android:id="@+id/btnFilter"
-        android:enabled="true"
         android:onClick="buttonFilterHandler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

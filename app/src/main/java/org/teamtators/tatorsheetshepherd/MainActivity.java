@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -26,54 +27,53 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> highAccAuto   =  new ArrayList<>();
-    ArrayList<String> highAccTele   =  new ArrayList<>();
-    ArrayList<String> color         =  new ArrayList<>();
-    ArrayList<String> cross         =  new ArrayList<>();
-    ArrayList<String> ded           =  new ArrayList<>();
-    ArrayList<String> defend        =  new ArrayList<>();
-    ArrayList<String> defenseRating =  new ArrayList<>();
-    ArrayList<String> gearFailA     =  new ArrayList<>();
-    ArrayList<String> gearFailT     =  new ArrayList<>();
-    ArrayList<String> gearPlace     =  new ArrayList<>();
-    ArrayList<String> gearPerPeg1   =  new ArrayList<>();
-    ArrayList<String> gearPerPeg2   =  new ArrayList<>();
-    ArrayList<String> gearPerPeg3   =  new ArrayList<>();
-    ArrayList<String> highCyclesTele=  new ArrayList<>();
-    ArrayList<String> highShotsAuto =  new ArrayList<>();
-    ArrayList<String> highShotsTele =  new ArrayList<>();
-    ArrayList<String> hopper1Auto   =  new ArrayList<>();
-    ArrayList<String> hopper2Auto   =  new ArrayList<>();
-    ArrayList<String> hopper3Auto   =  new ArrayList<>();
-    ArrayList<String> hopper4Auto   =  new ArrayList<>();
-    ArrayList<String> hopper1Tele   =  new ArrayList<>();
-    ArrayList<String> hopper2Tele   =  new ArrayList<>();
-    ArrayList<String> hopper3Tele   =  new ArrayList<>();
-    ArrayList<String> hopper4Tele   =  new ArrayList<>();
-    ArrayList<String> hopper5Tele   =  new ArrayList<>();
-    ArrayList<String> intermitt     =  new ArrayList<>();
-    ArrayList<String> lowDumpAuto   =  new ArrayList<>();
-    ArrayList<String> lowDumpTele   =  new ArrayList<>();
-    ArrayList<String> matchNum      =  new ArrayList<>();
-    ArrayList<String> noGears       =  new ArrayList<>();
-    ArrayList<String> note          =  new ArrayList<>();
-    ArrayList<String> scale         =  new ArrayList<>();
-    ArrayList<String> scaleFailed   =  new ArrayList<>();
-    ArrayList<String> scouter       =  new ArrayList<>();
-    ArrayList<String> goodPick      =  new ArrayList<>();
-    ArrayList<String> starting      =  new ArrayList<>();
-    ArrayList<String> stuc          =  new ArrayList<>();
-    ArrayList<String> teamNum       =  new ArrayList<>();
-    ArrayList<String> tipp          =  new ArrayList<>();
-    ArrayList<String> tooFastAuto   =  new ArrayList<>();
-    ArrayList<String> tooFastTele   =  new ArrayList<>();
-
-    ArrayList<String> retrievalFoul  =  new ArrayList<>();
-    ArrayList<String> retrievalClearGear  =  new ArrayList<>();
-    ArrayList<String> retrievalDropGear  =  new ArrayList<>();
-    ArrayList<String> gearStuckBot  =  new ArrayList<>();
-    ArrayList<String> avoidChoke  =  new ArrayList<>();
-    //ArrayList<String> truePHolder6  =  new ArrayList<>();
+    ArrayList<String> highAccAuto         =  new ArrayList<>(); //  These are your individual ArrayList segments.
+    ArrayList<String> highAccTele         =  new ArrayList<>(); // Each of these are used to put each specified
+    ArrayList<String> color               =  new ArrayList<>(); // column of data from the spreadsheet to the
+    ArrayList<String> cross               =  new ArrayList<>(); // app.
+    ArrayList<String> ded                 =  new ArrayList<>(); //
+    ArrayList<String> defend              =  new ArrayList<>(); //  If you delete one, you will see the spots in
+    ArrayList<String> defenseRating       =  new ArrayList<>(); // the app that require these ArrayLists. For
+    ArrayList<String> gearFailA           =  new ArrayList<>(); // example, try deleting "ArrayList<String> ded"
+    ArrayList<String> gearFailT           =  new ArrayList<>(); // You will notice that deleting "ded" breaks
+    ArrayList<String> gearPlace           =  new ArrayList<>(); // the app in 5 different places. Take note of
+    ArrayList<String> gearPerPeg1         =  new ArrayList<>(); // these places, they are all in the
+    ArrayList<String> gearPerPeg2         =  new ArrayList<>(); // prossesMatch method. Other ArrayLists like
+    ArrayList<String> gearPerPeg3         =  new ArrayList<>(); // "teamNum" break in both processMatch and
+    ArrayList<String> highCyclesTele      =  new ArrayList<>(); // processAVG.
+    ArrayList<String> highShotsAuto       =  new ArrayList<>(); //
+    ArrayList<String> highShotsTele       =  new ArrayList<>(); //  Overall, this is where you should start for
+    ArrayList<String> hopper1Auto         =  new ArrayList<>(); // adding and/or removing points of data to
+    ArrayList<String> hopper2Auto         =  new ArrayList<>(); // view on the app.
+    ArrayList<String> hopper3Auto         =  new ArrayList<>(); //
+    ArrayList<String> hopper4Auto         =  new ArrayList<>(); //
+    ArrayList<String> hopper1Tele         =  new ArrayList<>(); //
+    ArrayList<String> hopper2Tele         =  new ArrayList<>(); //
+    ArrayList<String> hopper3Tele         =  new ArrayList<>(); // 
+    ArrayList<String> hopper4Tele         =  new ArrayList<>(); //
+    ArrayList<String> hopper5Tele         =  new ArrayList<>(); //
+    ArrayList<String> intermitt           =  new ArrayList<>(); //
+    ArrayList<String> lowDumpAuto         =  new ArrayList<>(); //
+    ArrayList<String> lowDumpTele         =  new ArrayList<>(); //
+    ArrayList<String> matchNum            =  new ArrayList<>(); //
+    ArrayList<String> noGears             =  new ArrayList<>(); //
+    ArrayList<String> note                =  new ArrayList<>(); //
+    ArrayList<String> scale               =  new ArrayList<>(); //
+    ArrayList<String> scaleFailed         =  new ArrayList<>(); //
+    ArrayList<String> scouter             =  new ArrayList<>(); //
+    ArrayList<String> goodPick            =  new ArrayList<>(); //
+    ArrayList<String> starting            =  new ArrayList<>(); //
+    ArrayList<String> stuc                =  new ArrayList<>(); //
+    ArrayList<String> teamNum             =  new ArrayList<>(); //
+    ArrayList<String> tipp                =  new ArrayList<>(); //
+    ArrayList<String> tooFastAuto         =  new ArrayList<>(); //
+    ArrayList<String> tooFastTele         =  new ArrayList<>(); //
+    ArrayList<String> retrievalFoul       =  new ArrayList<>(); //
+    ArrayList<String> retrievalClearGear  =  new ArrayList<>(); //
+    ArrayList<String> retrievalDropGear   =  new ArrayList<>(); //
+    ArrayList<String> gearStuckBot        =  new ArrayList<>(); //
+    ArrayList<String> avoidChoke          =  new ArrayList<>(); //
+    //ArrayList<String> truePHolder6        =  new ArrayList<>();
 
     private int mSelected = -1;
 
@@ -81,14 +81,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean ayvg = false;
     public String indvTeam = "N/A";
     ArrayList<String> pl = new ArrayList<>();
-    public static boolean[] layoutBools = new boolean[4];
+    public static boolean[] layoutBools = new boolean[4]; //Boolean Permutation Array so the app knows what the size of the phone/tablet screen is
     public static ArrayList<ArrayList<String>> matchList = new ArrayList<>();
-    public static ArrayList<ArrayList<String>> avgList = new ArrayList<>(20);
+    public static ArrayList<ArrayList<String>> avgList = new ArrayList<>();
     GridView listview;
-    Button btnDownloadMatch;
-    Button btnDownloadAvg;
-    Button btnClear;
-    Button btnFilter;
+    Button btnDownloadMatch; // These are the buttons
+    Button btnDownloadAvg;   // used for each of their
+    Button btnClear;         // respective titles. Match,
+    Button btnFilter;        // Average, Clear, and Filter.
     final CharSequence[] filterTable = {"View One Team "," Match "," GoodPick ",
             " AutoGearPlacement "," FailAutoGear "," CrossedLine ",
             " NoAutoGear "," GearsOnPeg1 "," GearsOnPeg2 "," GearsOnPeg3 ",
@@ -106,50 +106,42 @@ public class MainActivity extends AppCompatActivity {
             " Teleop Accuracy "," Stuck "," Tipped "," Dead "," Intermittent ",
             " Retrieval Fouls "," Cleared Gears "," Dropped Gears "," Gear Jams "," Avoided Traffic "};
 
-    final static boolean[] smortBool = new boolean[25];
-    final static boolean[] matchBool = new boolean[37];
-    final static boolean[] avgBool = new boolean[37];
+    final static boolean[] smortBool = new boolean[25]; //This is the same size as "smortTable"  (Line 91)
+    final static boolean[] matchBool = new boolean[37]; //This is the same size as "filterTable" (Line 101)
+    final static boolean[] avgBool = new boolean[37];   //This is the same size as "filterTable" (Line 101)
     final ArrayList<Integer> selectedItems = new ArrayList<>();//USED ONLY IN THE FILTERING METHOD
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         super.onCreate(savedInstanceState);
-        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
-                == Configuration.SCREENLAYOUT_SIZE_SMALL) {
-            setContentView(R.layout.activity_main);
-        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
-                == Configuration.SCREENLAYOUT_SIZE_NORMAL){
-            setContentView(R.layout.activity_main);
-        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
-                == Configuration.SCREENLAYOUT_SIZE_LARGE){
-            setContentView(R.layout.activity_main);
-        } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
-                == Configuration.SCREENLAYOUT_SIZE_XLARGE){
-            setContentView(R.layout.activity_main);
-        } else {
-            setContentView(R.layout.activity_main);
-        }
-        listview = (GridView) findViewById(R.id.listview);
-        btnDownloadMatch = (Button) findViewById(R.id.btnDownloadMatch);
+        setContentView(R.layout.activity_main);
+        listview = (GridView) findViewById(R.id.listview); // GRIDVIEW
+        btnDownloadMatch = (Button) findViewById(R.id.btnDownloadMatch); // BUTTONS
         btnDownloadAvg = (Button) findViewById(R.id.btnDownloadAvg);
         btnClear = (Button) findViewById(R.id.btnClear);
         btnFilter = (Button) findViewById(R.id.btnFilter);
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
+        if (networkInfo != null && networkInfo.isConnected()) { // ENABLES AND COLORS APPROPRIATE BUTTONS IF YOU HAVE AN INTERNET CONNECTION
             btnDownloadMatch.setEnabled(true);
             btnDownloadAvg.setEnabled(true);
             btnFilter.setEnabled(true);
-        } else {
+            btnDownloadMatch.setBackgroundColor(Color.parseColor("#95fc8f"));
+            btnDownloadAvg.setBackgroundColor(Color.parseColor("#95fc8f"));
+            btnFilter.setBackgroundColor(Color.parseColor("#8fa6fc"));
+        } else {                                                // DISABLES AND GREYS OUT APPROPRIATE BUTTONS IF YOU HAVE NO INTERNET CONNECTION
             btnDownloadMatch.setEnabled(false);
             btnDownloadAvg.setEnabled(false);
             btnFilter.setEnabled(false);
+            btnDownloadMatch.setBackgroundColor(Color.parseColor("#666666"));
+            btnDownloadAvg.setBackgroundColor(Color.parseColor("#666666"));
+            btnFilter.setBackgroundColor(Color.parseColor("#666666"));
             Toast.makeText(getApplicationContext(), "There is no network connection. Please connect " +
                     "to a network to use this application.", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void singleTeamNumberHandler(View view){
+    public void singleTeamNumberHandler(View view){ /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         alert.setTitle("Input a Team Number");
@@ -162,8 +154,11 @@ public class MainActivity extends AppCompatActivity {
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 indvTeam = input.getText().toString();
-                indvTeam = indvTeam.replaceAll("[^\\d.]", "");
-                if(indvTeam.equals("")) indvTeam = "N/A";
+                indvTeam = indvTeam.replaceAll("[^\\d.]", ""); // Replaces anything that isn't a number with "". I.E: "21twentyonetwentytwo22" becomes "2122"
+                if(indvTeam.equals("")) indvTeam = "N/A"; // If you didn't put anything into the dialoge box,
+                                                          // or if you put their team name because you don't
+                                                          //know their team number (how dare you), it defaults to "N/A",
+                                                          //like hitting "Cancel"
                 btnSort(listview);
             }
         });
@@ -179,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         else btnSort(listview);
     }
 
-    public void buttonMatchHandler(View view) {
+    public void buttonMatchHandler(View view) { /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         buttonMatchClearHandler(view);
         for(int i = 0; i < matchBool.length; i++){
             matchBool[i] = true;
@@ -189,10 +184,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResult(JSONObject object) {
                 processMatch(object);
             }
-        }).execute("https://spreadsheets.google.com/tq?key=1j95MSzB2gVebuPpJT0AVd_0NvbcvqtXmqhytMKfS4J0");
-    }
+        }).execute("https://spreadsheets.google.com/tq?key=1j95MSzB2gVebuPpJT0AVd_0NvbcvqtXmqhytMKfS4J0"); //Changing Keys
+}
 
-    public void buttonMatchForFilter(View view) {
+    public void buttonMatchForFilter(View view) { /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         new DownloadWebpage(new AsyncResult() {
             @Override
             public void onResult(JSONObject object) {
@@ -201,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         }).execute("https://spreadsheets.google.com/tq?key=1j95MSzB2gVebuPpJT0AVd_0NvbcvqtXmqhytMKfS4J0");
     }
 
-    public void buttonAvgHandler(View view){
+    public void buttonAvgHandler(View view){ /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         buttonAVGClearHandler(view);
         for(int i = 0; i < avgBool.length; i++){
             avgBool[i] = true;
@@ -213,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }).execute("https://spreadsheets.google.com/tq?key=1GhBUrw-7G0Mm6U0SmcU11m9Z9juLxwFAY46SsW7r-r8");
     }
-    public void buttonAvgForFilter(View view){
+    public void buttonAvgForFilter(View view){ /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         new DownloadWebpage(new AsyncResult() {
             @Override
             public void onResult(JSONObject object) {
@@ -222,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         }).execute("https://spreadsheets.google.com/tq?key=1GhBUrw-7G0Mm6U0SmcU11m9Z9juLxwFAY46SsW7r-r8");
     }
 
-    public void btnSort(View view){
+    public void btnSort(View view){ // Sorts have NOT been implemented yet
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Not Yet Functional, Please Press 'No Thanks'");
         //builder.setTitle("What would you like to sort by?");
@@ -287,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
     public void sortForSmortAVG(){
     }
 
-    public void buttonMatchClearHandler(View view){
+    public void buttonMatchClearHandler(View view){ /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         for(ArrayList<String> match: matchList) {
             match.clear();
         }
@@ -335,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
     }
 
-    public void buttonAVGClearHandler(View view){
+    public void buttonAVGClearHandler(View view){ /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         for(ArrayList<String> avg: avgList) {
             avg.clear();
         }
@@ -384,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
     }
 
-    public void buttonFilterHandler(View view){
+    public void buttonFilterHandler(View view){ /* TODO THERE SHOULD BE NO NEED TO EDIT THIS METHOD */
         for(int i = 0; i < matchBool.length; i++){
             matchBool[i] = false;
         }
@@ -436,54 +431,54 @@ public class MainActivity extends AppCompatActivity {
     public void processMatch(JSONObject object) {
         try {
             JSONArray rows = object.getJSONArray("rows");
-            teamNum.add("Team#");
-            matchNum.add("Match#");
-            goodPick.add("GoodPick");
-            scouter.add("Scouter");
-            starting.add("StartPos");
-            color.add("Alliance");
-            noGears.add("NoAutoGear");
-            gearFailA.add("FailedGearAuto");
-            gearPlace.add("GoodGearAuto");
-            hopper1Auto.add("Hopper1Auto");
-            hopper2Auto.add("Hopper2Auto");
-            hopper3Auto.add("Hopper3Auto");
-            hopper4Auto.add("Hopper4Auto");
-            cross.add("LineCrossed");
-            lowDumpAuto.add("LowDumpsAuto");
-            highShotsAuto.add("HighShotsAuto");
-            highAccAuto.add("AutoAccuracy");
-            tooFastAuto.add("TooFastInAuto");
-            hopper1Tele.add("Hopper1Tele");
-            hopper2Tele.add("Hopper2Tele");
-            hopper3Tele.add("Hopper3Tele");
-            hopper4Tele.add("Hopper4Tele");
-            hopper5Tele.add("Hopper5Tele");
-            lowDumpTele.add("LowDumpsTele");
-            highShotsTele.add("HighShotsTele");
-            highCyclesTele.add("HighCyclesTele");
-            highAccTele.add("TeleAccuracy");
-            tooFastTele.add("TooFastInTele");
-            gearFailT.add("TeleGearFails");
-            gearPerPeg1.add("GearsOnPeg1");
-            gearPerPeg2.add("GearsOnPeg2");
-            gearPerPeg3.add("GearsOnPeg3");
-            defend.add("DidDefense");
-            defenseRating.add("DefensiveRating");
-            scale.add("Scaled");
-            scaleFailed.add("FailedScaling");
-            stuc.add("Stuck");
-            tipp.add("Tipped");
-            ded.add("Dead");
-            intermitt.add("Intermittent");
-            note.add("Notes");
+            teamNum.add(           "Team#"                                );
+            matchNum.add(           filterTable[1 ].toString()            );
+            goodPick.add(           filterTable[2 ].toString()            );
+            scouter.add(            filterTable[15].toString()            );
+            starting.add(           filterTable[14].toString()            );
+            color.add(              filterTable[17].toString()            );
 
-            retrievalFoul.add("RetrievalZoneFoul");
-            retrievalClearGear.add("RetrievalZoneClearedGears");
-            retrievalDropGear.add("RetrievalZoneDroppedGears");
-            gearStuckBot.add("GearsGotStuck");
-            avoidChoke.add("GotTrafficJammed");
-            //truePHolder6.add("Placeholder");
+            noGears.add(            filterTable[6 ].toString()            );
+            gearFailA.add(          filterTable[4 ].toString()            );
+            gearPlace.add(          filterTable[3 ].toString()            );
+            hopper1Auto.add(        filterTable[16].toString() + "1 Auto" );
+            hopper2Auto.add(        filterTable[16].toString() + "2 Auto" );
+            hopper3Auto.add(        filterTable[16].toString() + "3 Auto" );
+            hopper4Auto.add(        filterTable[16].toString() + "4 Auto" );
+            cross.add(              filterTable[5 ].toString()            );
+            lowDumpAuto.add(        filterTable[18].toString()            );
+            highShotsAuto.add(      filterTable[19].toString()            );
+            highAccAuto.add(        filterTable[20].toString()            );
+            tooFastAuto.add(        filterTable[21].toString()            );
+            hopper1Tele.add(        filterTable[16].toString() + "1 Tele" );
+            hopper2Tele.add(        filterTable[16].toString() + "2 Tele" );
+            hopper3Tele.add(        filterTable[16].toString() + "3 Tele" );
+            hopper4Tele.add(        filterTable[16].toString() + "4 Tele" );
+            hopper5Tele.add(        filterTable[16].toString() + "5 Tele" );
+            lowDumpTele.add(        filterTable[22].toString()            );
+            highShotsTele.add(      filterTable[23].toString()            );
+            highCyclesTele.add(     filterTable[24].toString()            );
+            highAccTele.add(        filterTable[25].toString()            );
+            tooFastTele.add(        filterTable[26].toString()            );
+            gearFailT.add(          filterTable[10].toString()            );
+            gearPerPeg1.add(        filterTable[7 ].toString()            );
+            gearPerPeg2.add(        filterTable[8 ].toString()            );
+            gearPerPeg3.add(        filterTable[9 ].toString()            );
+            defend.add(             filterTable[11].toString()            );
+            defenseRating.add(      filterTable[12].toString()            );
+            scale.add(              "Scaled"                              );
+            scaleFailed.add(        "FailedScaling"                       );
+            stuc.add(               filterTable[27].toString()            );
+            tipp.add(               filterTable[28].toString()            );
+            ded.add(                filterTable[29].toString()            );
+            intermitt.add(          filterTable[30].toString()            );
+            note.add(               filterTable[31].toString()            );
+            retrievalFoul.add(      filterTable[32].toString()            );
+            retrievalClearGear.add( filterTable[33].toString()            );
+            retrievalDropGear.add(  filterTable[34].toString()            );
+            gearStuckBot.add(       filterTable[35].toString()            );
+            avoidChoke.add(         filterTable[36].toString()            );
+            //truePHolder6.add(     "Placeholder"                         );
 
             for(int r = 0; r < rows.length(); ++r){
                 JSONObject row = rows.getJSONObject(r);
@@ -623,56 +618,55 @@ public class MainActivity extends AppCompatActivity {
 
                 //String truePlace6 = columns.getJSONObject(47?).getString("v");
 
-                teamNum.add(tem);
-                matchNum.add(mat);
-                goodPick.add(secPic);
-                scouter.add(scout);
-                starting.add(startingPos);
-                color.add(alliance);
-                noGears.add(nG);
-                gearFailA.add(fG);
-                gearPlace.add(pG);
-                hopper1Auto.add(aH1);
-                hopper2Auto.add(aH2);
-                hopper3Auto.add(aH3);
-                hopper4Auto.add(aH4);
-                cross.add(croS);
-                lowDumpAuto.add(aLow);
-                highShotsAuto.add(aHigh);
-                highAccAuto.add(autocracy);
-                tooFastAuto.add(aTF);
-                hopper1Tele.add(tH1);
-                hopper2Tele.add(tH2);
-                hopper3Tele.add(tH3);
-                hopper4Tele.add(tH4);
-                hopper5Tele.add(tH5);
-                lowDumpTele.add(tLow);
-                highShotsTele.add(tHigh);
-                highCyclesTele.add(tHighC);
-                highAccTele.add(telecracy);
-                tooFastTele.add(tTF);
-                gearFailT.add(fDrop);
-                gearPerPeg1.add(g1);
-                gearPerPeg2.add(g2);
-                gearPerPeg3.add(g3);
-                defend.add(deF);
-                defenseRating.add(dRating);
-                scale.add(scaL);
-                scaleFailed.add(scaF);
-                stuc.add(stuC);
-                tipp.add(tiPP);
-                ded.add(daed);
-                intermitt.add(inte);
-                note.add(notes);
+                teamNum.add(            tem         );
+                matchNum.add(           mat         );
+                goodPick.add(           secPic      );
+                scouter.add(            scout       );
+                starting.add(           startingPos );
+                color.add(              alliance    );
+                noGears.add(            nG          );
+                gearFailA.add(          fG          );
+                gearPlace.add(          pG          );
+                hopper1Auto.add(        aH1         );
+                hopper2Auto.add(        aH2         );
+                hopper3Auto.add(        aH3         );
+                hopper4Auto.add(        aH4         );
+                cross.add(              croS        );
+                lowDumpAuto.add(        aLow        );
+                highShotsAuto.add(      aHigh       );
+                highAccAuto.add(        autocracy   );
+                tooFastAuto.add(        aTF         );
+                hopper1Tele.add(        tH1         );
+                hopper2Tele.add(        tH2         );
+                hopper3Tele.add(        tH3         );
+                hopper4Tele.add(        tH4         );
+                hopper5Tele.add(        tH5         );
+                lowDumpTele.add(        tLow        );
+                highShotsTele.add(      tHigh       );
+                highCyclesTele.add(     tHighC      );
+                highAccTele.add(        telecracy   );
+                tooFastTele.add(        tTF         );
+                gearFailT.add(          fDrop       );
+                gearPerPeg1.add(        g1          );
+                gearPerPeg2.add(        g2          );
+                gearPerPeg3.add(        g3          );
+                defend.add(             deF         );
+                defenseRating.add(      dRating     );
+                scale.add(              scaL        );
+                scaleFailed.add(        scaF        );
+                stuc.add(               stuC        );
+                tipp.add(               tiPP        );
+                ded.add(                daed        );
+                intermitt.add(          inte        );
+                note.add(               notes       );
+                retrievalFoul.add(      rzFoul      );
+                retrievalClearGear.add( rzClear     );
+                retrievalDropGear.add(  rzDrop      );
+                gearStuckBot.add(       truePlace4  );
+                avoidChoke.add(         truePlace5  );
+                //truePHolder6.add(     truePlace6  );
 
-                retrievalFoul.add(rzFoul);
-                retrievalClearGear.add(rzClear);
-                retrievalDropGear.add(rzDrop);
-                gearStuckBot.add(truePlace4);
-                avoidChoke.add(truePlace5);
-                //truePHolder6.add(truePlace6);
-
-                pl.add("");
+                pl.add(""); // TODO Placeholders for Perfect Squares, will eventually have the same length as the rest of the ArrayLists
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -799,9 +793,7 @@ public class MainActivity extends AppCompatActivity {
         matchList.add(hopper4Tele);
         matchList.add(hopper5Tele);
         matchList.add(cross);
-
         //matchList.add(truePHolder6);
-
         matchList.add(lowDumpAuto);
         matchList.add(highShotsAuto);
         matchList.add(highAccAuto);
@@ -812,11 +804,9 @@ public class MainActivity extends AppCompatActivity {
         matchList.add(highAccTele);
         matchList.add(tooFastTele);
         matchList.add(gearFailT);
-
         matchList.add(retrievalFoul);
         matchList.add(retrievalClearGear);
         matchList.add(retrievalDropGear);
-
         matchList.add(gearPerPeg1);
         matchList.add(gearPerPeg2);
         matchList.add(gearPerPeg3);
@@ -828,10 +818,8 @@ public class MainActivity extends AppCompatActivity {
         matchList.add(tipp);
         matchList.add(ded);
         matchList.add(intermitt);
-
         matchList.add(gearStuckBot);
         matchList.add(avoidChoke);
-
         matchList.add(note);
 
         for(int i = 46; i < teamNum.size() - 1; i++){
@@ -858,23 +846,22 @@ public class MainActivity extends AppCompatActivity {
         indvTeam = "N/A";
     }
 
-    public void processAVG(JSONObject object){ //TODO: SEE IF PLACEHOLDERS ARE NEEDED IN processAVG()
+    public void processAVG(JSONObject object){
         try {
             JSONArray rows = object.getJSONArray("rows");
-            teamNum.add("Team#");
-            matchNum.add("MatchesPlayed");
-            gearPlace.add("GoodGearAuto");
-            gearFailA.add("FailedGearAuto");
-            cross.add("LineCrossed");
-            gearFailT.add("TeleGearFails");
-            gearPerPeg1.add("GearsOnPeg1");
-            gearPerPeg2.add("GearsOnPeg2");
-            gearPerPeg3.add("GearsOnPeg3");
-            scale.add("Scaled");
-            scaleFailed.add("FailedScaling");
-            defend.add("DidDefense");
-            defenseRating.add("DefensiveRating");
-
+            teamNum.add(       "Team#"           );
+            matchNum.add(      "MatchesPlayed"   );
+            gearPlace.add(     "GoodGearAuto"    );
+            gearFailA.add(     "FailedGearAuto"  );
+            cross.add(         "LineCrossed"     );
+            gearFailT.add(     "TeleGearFails"   );
+            gearPerPeg1.add(   "GearsOnPeg1"     );
+            gearPerPeg2.add(   "GearsOnPeg2"     );
+            gearPerPeg3.add(   "GearsOnPeg3"     );
+            scale.add(         "Scaled"          );
+            scaleFailed.add(   "FailedScaling"   );
+            defend.add(        "DidDefense"      );
+            defenseRating.add( "DefensiveRating" );
 
             for(int r = 1; r < rows.length(); r++){
                 JSONObject row = rows.getJSONObject(r);
@@ -920,21 +907,20 @@ public class MainActivity extends AppCompatActivity {
 
                 String plholder = " ";
 
-
-                teamNum.add(tem);
-                matchNum.add(mat);
-                gearFailA.add(fG);
-                gearPlace.add(pG);
-                cross.add(croS);
-                gearFailT.add(fDrop);
-                gearPerPeg1.add(g1);
-                gearPerPeg2.add(g2);
-                gearPerPeg3.add(g3);
-                defend.add(deF);
-                defenseRating.add(dRating);
-                scale.add(scaL);
-                scaleFailed.add(scaF);
-                pl.add(plholder);
+                teamNum.add(       tem      );
+                matchNum.add(      mat      );
+                gearFailA.add(     fG       );
+                gearPlace.add(     pG       );
+                cross.add(         croS     );
+                gearFailT.add(     fDrop    );
+                gearPerPeg1.add(   g1       );
+                gearPerPeg2.add(   g2       );
+                gearPerPeg3.add(   g3       );
+                defend.add(        deF      );
+                defenseRating.add( dRating  );
+                scale.add(         scaL     );
+                scaleFailed.add(   scaF     );
+                pl.add(            plholder );
             }
         } catch (JSONException e) {
             e.printStackTrace();
