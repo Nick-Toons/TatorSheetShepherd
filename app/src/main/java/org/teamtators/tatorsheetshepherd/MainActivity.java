@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             " TeleLowDumps "," TeleHighShots "," HighCycles "," TeleAccuracy ",
             " TeleTooFast "," Stuck "," Tipped "," Dead "," Intermittent ",
             " Notes ","RetrievalFouls","RetrievalClearedGears","RetrievalDroppedGear","GearJams",
-            "AvoidedTraffic"};//,"Placeholder"};
+            "TrafficJams"};//,"Placeholder"};
     final CharSequence[] smortTable = {" Match "," Good Pick "," Auto Gears ",
             " Fail Auto Gears "," No Auto Gears"," Teleop Gears "," Fail Teleop Gears ",
             " Did Defense "," Defense Rating "," Scaled Good "," Scaled Bad ",
@@ -269,8 +269,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        builder.create();
-        builder.show();
+        //builder.create();
+        //builder.show();
+        if(metch){
+            buttonMatchClearHandler(listview);
+            buttonMatchForFilter(listview);
+        } else {
+            buttonAVGClearHandler(listview);
+            buttonAvgForFilter(listview);
+        }
     }
 
     public void sortForSmortMatch(){
@@ -385,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
             avgBool[i] = false;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Choose your Filters");
+        builder.setTitle("Choose The Data You Wand to View");
         builder.setMultiChoiceItems(filterTable, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -475,7 +482,7 @@ public class MainActivity extends AppCompatActivity {
             retrievalClearGear.add("RetrievalZoneClearedGears");
             retrievalDropGear.add("RetrievalZoneDroppedGears");
             gearStuckBot.add("GearsGotStuck");
-            avoidChoke.add("AvoidedTrafficJam");
+            avoidChoke.add("GotTrafficJammed");
             //truePHolder6.add("Placeholder");
 
             for(int r = 0; r < rows.length(); ++r){
